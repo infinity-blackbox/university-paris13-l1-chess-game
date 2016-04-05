@@ -343,7 +343,7 @@ void partie_jouer(game_t * game_v){
             printf("\n\n\n");
 
         /* Developper command */
-        }else if(strcmp(game_command,"pass" && game_command_dev) == 0){
+        }else if(strcmp(game_command,"pass" == 0 && game_command_dev)){
             /* Separator */
             game_seperator();
 
