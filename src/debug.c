@@ -21,11 +21,11 @@ void debug_file(game_t * game_v){
     printf("DEBUG | File\n");
 
     file_link_t * file_link_tmp;
-    printf("Longueur: %d\n",file_list_tmp->fileListLength);
+    printf("Longueur: %d\n",file_list_tmp->length);
     if(!file_empty(file_list_tmp)){
-        for(file_link_tmp=file_list_tmp->fileListFirst,i=0;file_link_tmp!=NULL;i++,file_link_tmp=file_link_tmp->fileLinkNext){
-            printf("Maillon %d | (%d;%d) ",i,file_link_tmp->fileLinkMovement.movementInput.x, file_link_tmp->fileLinkMovement.movementInput.y);
-            printf("(%d;%d)\n",file_link_tmp->fileLinkMovement.movementOutput.x,file_link_tmp->fileLinkMovement.movementOutput.y);
+        for(file_link_tmp=file_list_tmp->first,i=0;file_link_tmp!=NULL;i++,file_link_tmp=file_link_tmp->next){
+            printf("Maillon %d | (%d;%d) ",i,file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
+            printf("(%d;%d)\n",file_link_tmp->movement.ouput.x,file_link_tmp->movement.ouput.y);
         }
     }else{
         printf("La file ne contient rien.");
@@ -42,10 +42,10 @@ void debug_pile(game_t * game_v){
     pile_link_t * pile_link_tmp;
     printf("Taille: %d\n",pile_list_tmp->pileListLength);
     if(!pile_empty(pile_list_tmp)){
-        for(pile_link_tmp=pile_list_tmp->pileListFirst,i=0;pile_link_tmp!=NULL;i++,pile_link_tmp=pile_link_tmp->pileLinkNext){
+        for(pile_link_tmp=pile_list_tmp->first,i=0;pile_link_tmp!=NULL;i++,pile_link_tmp=pile_link_tmp->next){
             printf("Maillon %d | '",i);
-            piece_afficher(pile_link_tmp->pileLinkPiece);
-            printf("' (%d;%d)\n",pile_link_tmp->pileLinkPiece.pieceType,pile_link_tmp->pileLinkPiece.pieceColor);
+            piece_afficher(pile_link_tmp->piece);
+            printf("' (%d;%d)\n",pile_link_tmp->piece.type,pile_link_tmp->piece.color);
         }
     }else{
         printf("La pile ne contient rien.");

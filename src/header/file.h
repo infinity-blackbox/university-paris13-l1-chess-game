@@ -27,21 +27,21 @@ typedef struct coordinate_s{
 /* @section 1.2 file link */
 typedef struct movment_s{
     int value;
-    coordinate_t movementInput;
-    coordinate_t movementOutput;
+    coordinate_t input;
+    coordinate_t ouput;
 } movement_t;
 
 /* @section 1. file link */
 typedef struct file_link_s{
-    movement_t fileLinkMovement;
-    struct file_link_s * fileLinkNext;
+    movement_t movement;
+    struct file_link_s * next;
 }file_link_t;
 
 /* @section 2. file list */
 typedef struct file_list_s{
-    file_link_t * fileListFirst;
-    file_link_t * fileListLast;
-    int fileListLength;
+    file_link_t * first;
+    file_link_t * last;
+    int length;
 }file_list_t;
 
 /**

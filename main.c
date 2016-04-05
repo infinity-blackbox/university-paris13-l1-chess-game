@@ -11,8 +11,7 @@
 #include<stdlib.h>
 #include"src/loader.h"
 
-int main()
-{
+int main(){
     game_t * game_new=partie_nouvelle();
     partie_jouer(game_new);
     return EXIT_SUCCESS;

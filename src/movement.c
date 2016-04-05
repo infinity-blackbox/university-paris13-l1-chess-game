@@ -19,18 +19,18 @@
     int movement_pawn_tmp=coordinate_output_v.x-coordinate_input_v.x;
 
     if(coordinate_input_v.x != coordinate_output_v.x || coordinate_input_v.y != coordinate_output_v.y){
-    switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceType){
+    switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].type){
         {
             case 1:
             if(deplacement_valide_pion(coordinate_input_v,coordinate_output_v)){
-                if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceColor == WHITE_PIECE){
+                if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE){
                     if(movement_pawn_tmp == 1 || (movement_pawn_tmp <=2 && movement_pawn_tmp > 0)){
                         depalcement(game_v, coordinate_input_v, coordinate_output_v);
                         printf("Le pion a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
                     }else{
                         printf("Le deplacement a echouer.\n");
                     }
-                }else if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceColor == BLACK_PIECE){
+                }else if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == BLACK_PIECE){
                     if(movement_pawn_tmp == -1 || (movement_pawn_tmp >= -2 && movement_pawn_tmp < 0)){
                         depalcement(game_v, coordinate_input_v, coordinate_output_v);
                         printf("Le pion a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
@@ -110,8 +110,8 @@
  */
 int movement_valid_input(game_t * game_v, coordinate_t coordinate_v){
     if(coordinate_v.x<8 && coordinate_v.y<8){
-            if(game_v->board[coordinate_v.x][coordinate_v.y].pieceType != 0){
-                if(game_v->player == game_v->board[coordinate_v.x][coordinate_v.y].pieceColor){
+            if(game_v->board[coordinate_v.x][coordinate_v.y].type != 0){
+                if(game_v->player == game_v->board[coordinate_v.x][coordinate_v.y].color){
                     return 1;
                 }
             }
@@ -250,17 +250,17 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
  int movement_valid_helper(game_t * game_v,coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
     int movement_pawn_tmp=coordinate_output_v.x-coordinate_input_v.x;
 
-    switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceType){
+    switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].type){
         {
             case 1:
             if(deplacement_valide_pion(coordinate_input_v,coordinate_output_v)){
-                if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceColor == WHITE_PIECE){
+                if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE){
                     if(movement_pawn_tmp == 1 || (movement_pawn_tmp <=2 && movement_pawn_tmp > 0)){
                         return 1;
                     }else{
                         return 0;
                     }
-                }else if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceColor == BLACK_PIECE){
+                }else if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == BLACK_PIECE){
                     if(movement_pawn_tmp == -1 || (movement_pawn_tmp >= -2 && movement_pawn_tmp < 0)){
                         return 1;
                     }else{
