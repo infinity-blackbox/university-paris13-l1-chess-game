@@ -320,7 +320,7 @@ void partie_jouer(game_t * game_v){
             printf("\n");
 
             /* Classic command */
-            printf("SURREND               D�clarer forfait.\n");
+            printf("SURREND               Declarer forfait.\n");
             printf("MOVE                  Selectionner le deplacement d'une piece.\n");
             printf("BACK                  Restaurer le deplacement precedent.\n");
             printf("SAVE                  Sauvegarder la partie.\n");
@@ -343,7 +343,7 @@ void partie_jouer(game_t * game_v){
             printf("\n\n\n");
 
         /* Developper command */
-        }else if(strcmp(game_command,"pass" == 0 && game_command_dev)){
+        }else if(strcmp(game_command,"pass") == 0 && game_command_dev){
             /* Separator */
             game_seperator();
 
