@@ -25,6 +25,10 @@ int case_vide(piece_t piece_v){
 return 0;
 }
 
+/* ---- REVERTED CHANGE BY RAKIB ---- */
+/* Data input level 1 */
+    char game_command[20] = "";
+
 /**
  * cell editing
  */
@@ -258,7 +262,7 @@ void game_seperator(){
 /**
  * game select
  */
-void game_selector(char game_commPand[MAX_CHAR], char select_v[MAX_CHAR]){
+int game_selector(char game_command[MAX_CHAR], char select_v[MAX_CHAR]){ /* --- SPELL FIX AND TYPE FIX --- */
     if(strcmp(game_command, select_v) == 0){
 		return 1;
 	}else{

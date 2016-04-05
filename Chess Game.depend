@@ -126,12 +126,12 @@
 	<stdlib.h>
 	"loader.h"
 
-1459842636 source:c:\users\noobzik\desktop\dev-chess\main.c
+1459889275 source:c:\users\noobzik\desktop\dev-chess\main.c
 	<stdio.h>
 	<stdlib.h>
 	"src/loader.h"
 
-1459836960 c:\users\noobzik\desktop\dev-chess\src\loader.h
+1459889260 c:\users\noobzik\desktop\dev-chess\src\loader.h
 	"header/piece.h"
 	"header/game.h"
 	"header/file.h"
@@ -139,34 +139,44 @@
 	"header/movement.h"
 	"header/debug.h"
 
-1459843382 c:\users\noobzik\desktop\dev-chess\src\header\piece.h
+1459889279 c:\users\noobzik\desktop\dev-chess\src\header\piece.h
 
-1459845836 c:\users\noobzik\desktop\dev-chess\src\header\game.h
+1459890072 c:\users\noobzik\desktop\dev-chess\src\header\game.h
 	"file.h"
 	"pile.h"
 	"piece.h"
 
-1459844990 c:\users\noobzik\desktop\dev-chess\src\header\file.h
+1459889274 c:\users\noobzik\desktop\dev-chess\src\header\file.h
 	"game.h"
 
-1459844986 c:\users\noobzik\desktop\dev-chess\src\header\pile.h
+1459889279 c:\users\noobzik\desktop\dev-chess\src\header\pile.h
 	"piece.h"
 
-1459837740 c:\users\noobzik\desktop\dev-chess\src\header\movement.h
+1459889278 c:\users\noobzik\desktop\dev-chess\src\header\movement.h
 
-1459836960 c:\users\noobzik\desktop\dev-chess\src\header\debug.h
+1459889276 c:\users\noobzik\desktop\dev-chess\src\header\debug.h
 
-1459845340 source:c:\users\noobzik\desktop\dev-chess\src\debug.c
+1459889243 source:c:\users\noobzik\desktop\dev-chess\src\debug.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1459844762 source:c:\users\noobzik\desktop\dev-chess\src\file.c
+1459889258 source:c:\users\noobzik\desktop\dev-chess\src\file.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1459843792 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
+1459889260 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1459889261 source:c:\users\noobzik\desktop\dev-chess\src\piece.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1459889262 source:c:\users\noobzik\desktop\dev-chess\src\pile.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
