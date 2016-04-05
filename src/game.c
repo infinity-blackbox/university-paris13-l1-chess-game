@@ -300,7 +300,7 @@ void partie_jouer(game_t * game_v){
     while(game_play){
         /* Command input */
         printf("Entrer une commande: ");
-        scanf("%s",&game_command);
+        scanf("%19s",game_command);
         fflush(stdin);
 
         /* Help command */
@@ -465,9 +465,9 @@ void partie_jouer(game_t * game_v){
             game_seperator();
 
             printf("Entrer le nom de la partie:");
-            scanf("%s",&game_save_name);
+            scanf("%19s",game_save_name);
             printf("Entrer l'emplacement de la sauvegarder:");
-            scanf("%s",&game_save_path_v);
+            scanf("%19s",game_save_path_v);
             partie_sauvegarder(game_v, game_save_name, game_save_path_v);
 
             /* Exit loop */
@@ -483,7 +483,7 @@ void partie_jouer(game_t * game_v){
             afficher_echiquier(game_v);
             printf("\n\n");
             printf("Etes vous sur de quitter sans sauvegarder? (oui/non)\n");
-            scanf("%s",&game_exit_confirmation);
+            scanf("%19s",game_exit_confirmation);
 
             if(strcmp(game_exit_confirmation,"oui") == 0){
                 /* Separator */
