@@ -17,8 +17,8 @@
  */
 piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v){
     piece_t res;
-    res.pieceColor = piece_color_v;
-    res.pieceType = piece_type_v;
+    res.color = piece_color_v;
+    res.type = piece_type_v;
     return res;
 }
 
@@ -28,7 +28,7 @@ piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v){
  * @return int
  */
 int piece_couleur(piece_t piece_v){
-    return piece_v.pieceColor;
+    return piece_v.color;
 }
 
 /**
@@ -102,7 +102,7 @@ piece_t piece_identifier(char caracter_v){
  */
 char piece_caractere(piece_t piece_v){
     if(!piece_couleur(piece_v)){
-        switch(piece_v.pieceType){
+        switch(piece_v.type){
             {
                 case 1:
                 return 'P';
@@ -137,7 +137,7 @@ char piece_caractere(piece_t piece_v){
             }
         }
     }else{
-        switch(piece_v.pieceType){
+        switch(piece_v.type){
             {
                 case 1:
                 return 'p';

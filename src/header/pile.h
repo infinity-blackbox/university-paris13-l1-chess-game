@@ -18,14 +18,14 @@
 
 /* @section 1. pile link */
 typedef struct pile_link_s{
-    piece_t pileLinkPiece;
-    struct pile_link_s * pileLinkNext;
+    piece_t piece;
+    struct pile_link_s * next;
 }pile_link_t;
 
 /* @section 2. pile list */
 typedef struct pile_list_s{
-    pile_link_t * pileListFirst;
-    pile_link_t * pileListLast;
+    pile_link_t * first;
+    pile_link_t * last;
     int pileListLength;
 }pile_list_t;
 

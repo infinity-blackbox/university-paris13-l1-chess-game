@@ -19,8 +19,8 @@ typedef enum{EMPTY, PAWN, ROCK, KNIGHT, BISHOP, QUEEN, KING, SELECT} piece_type_
 
 /* @section 1. piece */
 typedef struct piece_s{
-    piece_color_e pieceColor;
-    piece_type_e pieceType;
+    piece_color_e color;
+    piece_type_e type;
 } piece_t;
 
 /**

@@ -17,8 +17,8 @@
  */
 pile_link_t * pile_link_create(piece_t piece_v){
     pile_link_t * res=(pile_link_t*)malloc(sizeof(pile_link_t));
-    res->pileLinkPiece=piece_v;
-    res->pileLinkNext=NULL;
+    res->piece=piece_v;
+    res->next=NULL;
     return res;
 }
 
@@ -35,11 +35,11 @@ void pile_link_destruct(pile_link_t * pile_link_v){
 void pile_list_add(pile_list_t * pile_list_v, piece_t piece_v){
     pile_link_t * pile_link_tmp=pile_link_create(piece_v);
     if(pile_empty(pile_list_v)){
-        pile_list_v->pileListLast=pile_link_tmp;
+        pile_list_v->last=pile_link_tmp;
     }else{
-        pile_link_tmp->pileLinkNext=pile_list_v->pileListFirst;
+        pile_link_tmp->next=pile_list_v->first;
     }
-    pile_list_v->pileListFirst=pile_link_tmp;
+    pile_list_v->first=pile_link_tmp;
     pile_list_v->pileListLength++;
 }
 
@@ -49,12 +49,12 @@ void pile_list_add(pile_list_t * pile_list_v, piece_t piece_v){
 pile_link_t * pile_list_extract(pile_list_t * pile_list_v){
     pile_link_t * res=NULL;
     if(!pile_empty(pile_list_v)){
-        res=pile_list_v->pileListFirst;
-        pile_list_v->pileListFirst=res->pileLinkNext;
-        res->pileLinkNext=NULL;
+        res=pile_list_v->first;
+        pile_list_v->first=res->next;
+        res->next=NULL;
         pile_list_v->pileListLength--;
         if(pile_empty(pile_list_v)){
-            pile_list_v->pileListLast=NULL;
+            pile_list_v->last=NULL;
         }
     }
     return res;
@@ -67,8 +67,8 @@ pile_link_t * pile_list_extract(pile_list_t * pile_list_v){
  */
 pile_list_t * pile_create(){
     pile_list_t * res=(pile_list_t*)malloc(sizeof(pile_list_t));
-    res->pileListFirst=NULL;
-    res->pileListLast=NULL;
+    res->first=NULL;
+    res->last=NULL;
     res->pileListLength=0;
     return res;
 }
@@ -116,7 +116,7 @@ void pile_stacking(pile_list_t * pile_list_v, piece_t piece){
  */
 piece_t pile_unstacking(pile_list_t * pile_list_v){
     pile_link_t * pile_link_tmp=pile_list_extract(pile_list_v);
-    piece_t res=pile_link_tmp->pileLinkPiece;
+    piece_t res=pile_link_tmp->piece;
     pile_list_extract(pile_link_tmp);
     return res;
 }
