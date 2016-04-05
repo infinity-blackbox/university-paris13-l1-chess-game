@@ -29,7 +29,7 @@ return 0;
  */
 void modifier_case(game_t * game_v, piece_t * piece_v, coordinate_t coordinate_v){
     piece_t res;
-	
+
 	res = piece_creer(piece_v->color,piece_v->type);
     game_v->board[coordinate_v.x][coordinate_v.y] = res;
 }
@@ -50,7 +50,7 @@ void changer_joueur(game_t * game_v){
  */
 void depalcement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
     movement_t game_movement_tmp;
-	
+
     game_movement_tmp.input = coordinate_input_v;
     game_movement_tmp.ouput = coordinate_output_v;
     if(!case_vide(game_v->board[coordinate_input_v.x][coordinate_input_v.y])){
@@ -257,9 +257,9 @@ void game_seperator(){
 /**
  * game select
  */
-void game_selector(char game_command[MAX_CHAR], char select_v[MAX_CHAR]){
+void game_selector(char game_commPand[MAX_CHAR], char select_v[MAX_CHAR]){
     if(strcmp(game_command, select_v) == 0){
-		return 1
+		return 1;
 	}else{
 		return 0;
 	}
@@ -284,7 +284,7 @@ void partie_jouer(game_t * game_v){
     /* Game setting */
     int game_command_dev;
     int game_play;
-	
+
     SELECT_NULL.x = NULL;
     SELECT_NULL.y = NULL;
 	game_command_dev = 0;
