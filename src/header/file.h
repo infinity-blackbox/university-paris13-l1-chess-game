@@ -41,7 +41,7 @@ typedef struct file_link_s{
 typedef struct file_list_s{
     file_link_t * first;
     file_link_t * last;
-    int fileListLength;
+    int length;
 }file_list_t;
 
 /**

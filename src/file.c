@@ -40,7 +40,7 @@ void file_list_add(file_list_t * file_list_v, movement_t movement_v){
         file_list_v->last->next=file_link_tmp;
     }
     file_list_v->last=file_link_tmp;
-    file_list_v->fileListLength++;
+    file_list_v->length++;
 }
 
 /**
@@ -52,7 +52,7 @@ file_link_t * file_list_extract(file_list_t * file_list_v){
         res=file_list_v->first;
         file_list_v->first=res->next;
         res->next=NULL;
-        file_list_v->fileListLength--;
+        file_list_v->length--;
         if(file_empty(file_list_v)){
             file_list_v->last=NULL;
         }
@@ -69,7 +69,7 @@ file_list_t * file_create(){
     file_list_t * res=(file_list_t*)malloc(sizeof(file_list_t));
     res->first=NULL;
     res->last=NULL;
-    res->fileListLength=0;
+    res->length=0;
     return res;
 }
 
@@ -89,7 +89,7 @@ void file_destruct(file_list_t * file_list_v){
  * @return int
  */
 int file_empty(file_list_t * file_list_v){
-    if(file_list_v->fileListLength==0){
+    if(file_list_v->length==0){
         return 1;
     }
     return 0;
@@ -101,7 +101,7 @@ int file_empty(file_list_t * file_list_v){
  * @return int
  */
 int file_length(file_list_t * file_list_v){
-    return file_list_v->fileListLength;
+    return file_list_v->length;
 }
 
 /**

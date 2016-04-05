@@ -21,7 +21,7 @@ void debug_file(game_t * game_v){
     printf("DEBUG | File\n");
 
     file_link_t * file_link_tmp;
-    printf("Longueur: %d\n",file_list_tmp->fileListLength);
+    printf("Longueur: %d\n",file_list_tmp->length);
     if(!file_empty(file_list_tmp)){
         for(file_link_tmp=file_list_tmp->first,i=0;file_link_tmp!=NULL;i++,file_link_tmp=file_link_tmp->next){
             printf("Maillon %d | (%d;%d) ",i,file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
