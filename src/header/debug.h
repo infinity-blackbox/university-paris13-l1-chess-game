@@ -8,6 +8,7 @@
  * @package Chess Game
  * @category Debug Header
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_STRUCTURE_DEBUG

@@ -4,6 +4,7 @@
  * @package Chess Game
  * @category Loader
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_LOADER

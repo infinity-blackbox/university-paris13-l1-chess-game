@@ -8,6 +8,7 @@
  * @package Chess Game
  * @category Movement Header
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_STRUCTURE_MOVEMENT

@@ -9,6 +9,7 @@
  * @package Chess Game
  * @category Piece Header
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_STRUCTURE_PIECE

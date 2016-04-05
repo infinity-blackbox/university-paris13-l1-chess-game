@@ -4,6 +4,7 @@
  * @package Chess Game
  * @category File Main
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #include<stdio.h>

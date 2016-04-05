@@ -10,6 +10,7 @@
  * @package Chess Game
  * @category Pile Header
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_STRUCTURE_PILE

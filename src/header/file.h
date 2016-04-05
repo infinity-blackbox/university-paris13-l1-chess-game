@@ -12,6 +12,7 @@
  * @package Chess Game
  * @category File Header
  * @author William Phetsinorath
+ *         Rakib Sheikh
  */
 
 #ifndef DEF_STRUCTURE_FILE
