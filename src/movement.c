@@ -18,6 +18,7 @@
  void depalcement_valide(game_t * game_v,coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
     int movement_pawn_tmp=coordinate_output_v.x-coordinate_input_v.x;
 
+    if(coordinate_input_v.x != coordinate_output_v.x || coordinate_input_v.y != coordinate_output_v.y){
     switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].pieceType){
         {
             case 1:
@@ -98,6 +99,7 @@
             default:
             break;
         }
+    }
     }
  }
 
