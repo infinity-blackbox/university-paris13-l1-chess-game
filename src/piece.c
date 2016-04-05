@@ -41,58 +41,58 @@ piece_t piece_identifier(char caracter_v){
         switch(caracter_v){
             {
                 case 'P':
-                return piece_creer(BLACK_PIECE,PAWN);
+                return piece_creer(BLACK_PIECE, PAWN);
             }
             {
                 case 'T':
-                return piece_creer(BLACK_PIECE,ROCK);
+                return piece_creer(BLACK_PIECE, ROCK);
             }
             {
                 case 'C':
-                return piece_creer(BLACK_PIECE,KNIGHT);
+                return piece_creer(BLACK_PIECE, KNIGHT);
             }
             {
                 case 'F':
-                return piece_creer(BLACK_PIECE,BISHOP);
+                return piece_creer(BLACK_PIECE, BISHOP);
             }
             {
                 case 'R':
-                return piece_creer(BLACK_PIECE,QUEEN);
+                return piece_creer(BLACK_PIECE, QUEEN);
             }
             {
                 case 'E':
-                return piece_creer(BLACK_PIECE,KING);
+                return piece_creer(BLACK_PIECE, KING);
             }
             }
     }else{
         switch(caracter_v){
             {
                 case 'p':
-                return piece_creer(WHITE_PIECE,PAWN);
+                return piece_creer(WHITE_PIECE, PAWN);
             }
             {
                 case 't':
-                return piece_creer(WHITE_PIECE,ROCK);
+                return piece_creer(WHITE_PIECE, ROCK);
             }
             {
                 case 'c':
-                return piece_creer(WHITE_PIECE,KNIGHT);
+                return piece_creer(WHITE_PIECE, KNIGHT);
             }
             {
                 case 'f':
-                return piece_creer(WHITE_PIECE,BISHOP);
+                return piece_creer(WHITE_PIECE, BISHOP);
             }
             {
                 case 'r':
-                return piece_creer(WHITE_PIECE,QUEEN);
+                return piece_creer(WHITE_PIECE, QUEEN);
             }
             {
                 case 'e':
-                return piece_creer(WHITE_PIECE,KING);
+                return piece_creer(WHITE_PIECE, KING);
             }
         }
     }
-    return piece_creer(EMPTY_PIECE,EMPTY); /* Anti return non void warning : code block */
+    return piece_creer(EMPTY_PIECE, EMPTY);
 }
 
 /**
@@ -172,12 +172,12 @@ char piece_caractere(piece_t piece_v){
             }
         }
     }
-    return '.'; /* Anti return non void warning : code block */
+    return '.';
 }
 
 /**
  * piece displayer
  */
 void piece_afficher(piece_t piece_v){
-    printf("%c",piece_caractere(piece_v));
+    printf("%c", piece_caractere(piece_v));
 }

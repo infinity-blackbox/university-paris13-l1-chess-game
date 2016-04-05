@@ -203,13 +203,13 @@ int deplacement_valide_cavalier(coordinate_t coordinate_input_v,coordinate_t coo
  * @return int
  */
 int deplacement_valide_four(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
-    int movement_1_tmp      =   (coordinate_output_v.x + coordinate_output_v.y);
-    int movement_2_tmp      =   (coordinate_input_v.x+coordinate_input_v.y);
-    int movement_1_bis_tmp  =   (coordinate_input_v.x-coordinate_input_v.y);
-    int movement_2_bis_tmp  =   (coordinate_output_v.x-coordinate_output_v.y);
-    
-    
-    if(movement_1_tmp == movement_2_tmp || movement_2_bis_tmp == movement_1_bis_tmp  ){
+    int movement_1_tmp      =   (coordinate_output_v.x + coordinate_output_v.y);  
+    int movement_2_tmp      =   (coordinate_input_v.x+coordinate_input_v.y);  
+    int movement_1_bis_tmp  =   (coordinate_input_v.x-coordinate_input_v.y);  
+    int movement_2_bis_tmp  =   (coordinate_output_v.x-coordinate_output_v.y);  
+      
+      
+    if(movement_1_tmp == movement_2_tmp || movement_2_bis_tmp == movement_1_bis_tmp  ){  
         return 1;
     }
     return 0;

@@ -26,7 +26,7 @@ typedef struct pile_link_s{
 typedef struct pile_list_s{
     pile_link_t * first;
     pile_link_t * last;
-    int pileListLength;
+    int length;
 }pile_list_t;
 
 /**
@@ -37,6 +37,7 @@ typedef struct pile_list_s{
  */
 pile_link_t * pile_link_create();
 void pile_link_destruct();
+
 void pile_list_add();
 pile_link_t * pile_list_extract();
 

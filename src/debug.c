@@ -16,16 +16,19 @@ void debug_location(x_v){
 
 void debug_file(game_t * game_v){
     int i;
-    file_list_t * file_list_tmp=game_v->piecePlay;
+    file_list_t * file_list_tmp;
+    file_link_t * file_link_tmp;
+	
+	file_list_tmp = game_v->played;
 
     printf("DEBUG | File\n");
 
-    file_link_t * file_link_tmp;
-    printf("Longueur: %d\n",file_list_tmp->length);
+    printf("Longueur: %d\n", file_list_tmp->length);
     if(!file_empty(file_list_tmp)){
-        for(file_link_tmp=file_list_tmp->first,i=0;file_link_tmp!=NULL;i++,file_link_tmp=file_link_tmp->next){
-            printf("Maillon %d | (%d;%d) ",i,file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
-            printf("(%d;%d)\n",file_link_tmp->movement.ouput.x,file_link_tmp->movement.ouput.y);
+        for(file_link_tmp = file_list_tmp->first, i = 0; file_link_tmp != NULL; i++, file_link_tmp = file_link_tmp->next){
+            printf("Maillon %d | ", i);
+			printf("(%d;%d) ", file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
+            printf("(%d;%d)\n", file_link_tmp->movement.ouput.x, file_link_tmp->movement.ouput.y);
         }
     }else{
         printf("La file ne contient rien.");
@@ -35,17 +38,19 @@ void debug_file(game_t * game_v){
 
 void debug_pile(game_t * game_v){
     int i;
-    pile_list_t * pile_list_tmp=game_v->pieceCatch;
+    pile_list_t * pile_list_tmp;
+    pile_link_t * pile_link_tmp;
+	
+	pile_list_tmp = game_v->catched;
 
     printf("DEBUG | Pile\n");
 
-    pile_link_t * pile_link_tmp;
-    printf("Taille: %d\n",pile_list_tmp->pileListLength);
+    printf("Taille: %d\n",pile_list_tmp->length);
     if(!pile_empty(pile_list_tmp)){
-        for(pile_link_tmp=pile_list_tmp->first,i=0;pile_link_tmp!=NULL;i++,pile_link_tmp=pile_link_tmp->next){
-            printf("Maillon %d | '",i);
+        for(pile_link_tmp = pile_list_tmp->first, i = 0; pile_link_tmp != NULL; i++, pile_link_tmp = pile_link_tmp->next){
+            printf("Maillon %d | '", i);
             piece_afficher(pile_link_tmp->piece);
-            printf("' (%d;%d)\n",pile_link_tmp->piece.type,pile_link_tmp->piece.color);
+            printf("' (%d;%d)\n",pile_link_tmp->piece.type, pile_link_tmp->piece.color);
         }
     }else{
         printf("La pile ne contient rien.");

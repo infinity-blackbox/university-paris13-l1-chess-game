@@ -48,6 +48,7 @@
 		</Unit>
 		<Unit filename="src/header/file.h" />
 		<Unit filename="src/header/game.h" />
+		<Unit filename="src/header/link.h" />
 		<Unit filename="src/header/movement.h" />
 		<Unit filename="src/header/piece.h" />
 		<Unit filename="src/header/pile.h" />

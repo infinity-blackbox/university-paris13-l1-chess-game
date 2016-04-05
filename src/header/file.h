@@ -52,6 +52,7 @@ typedef struct file_list_s{
  */
 file_link_t * file_link_create();
 void file_link_destruct();
+
 void file_list_add();
 file_link_t * file_list_extract();
 
