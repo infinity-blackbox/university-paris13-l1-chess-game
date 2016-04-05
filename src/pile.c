@@ -128,6 +128,6 @@ piece_t pile_unstacking(pile_list_t * pile_list_v){
 
 	pile_link_tmp = pile_list_extract(pile_list_v);
     piece_t res = pile_link_tmp->piece;
-    pile_list_extract(pile_link_tmp); /* Need Warning fix */
+    pile_link_t *  pile_list_extract(pile_link_tmp); /* Need Warning fix */
     return res;
 }
