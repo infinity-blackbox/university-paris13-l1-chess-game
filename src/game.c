@@ -136,7 +136,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
         }
 
         /* Selection detector */
-        if(game_input_tmp.x != NULL || game_input_tmp.y != NULL){
+        if(game_input_tmp.x != '\0' || game_input_tmp.y != '\0'){ /* Fixed warning */
             /* Chess board */
             for(y=0; y<8; y++){
                 game_output_tmp.x = x;
@@ -290,8 +290,8 @@ void partie_jouer(game_t * game_v){
     int game_command_dev;
     int game_play;
 
-    SELECT_NULL.x = NULL;
-    SELECT_NULL.y = NULL;
+    SELECT_NULL.x = '\0'; /* Fixed Warning */
+    SELECT_NULL.y = '\0'; /* Fixed Warning */
 	game_command_dev = 0;
 	game_play = 1;
 

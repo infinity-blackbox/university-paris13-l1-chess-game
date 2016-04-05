@@ -166,7 +166,7 @@
 	<stdlib.h>
 	"loader.h"
 
-1459889260 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
+1459891278 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
@@ -179,5 +179,11 @@
 1459889262 source:c:\users\noobzik\desktop\dev-chess\src\pile.c
 	<stdio.h>
 	<stdlib.h>
+	"loader.h"
+
+1459891098 source:c:\users\noobzik\desktop\dev-chess\src\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
 	"loader.h"
 

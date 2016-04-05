@@ -18,7 +18,7 @@
  */
 pile_link_t * pile_link_create(piece_t piece_v){
     pile_link_t * res;
-	
+
 	res = (pile_link_t*)malloc(sizeof(pile_link_t));
     res->piece = piece_v;
     res->next = NULL;
@@ -37,7 +37,7 @@ void pile_link_destruct(pile_link_t * pile_link_v){
  */
 void pile_list_add(pile_list_t * pile_list_v, piece_t piece_v){
     pile_link_t * pile_link_tmp;
-	
+
 	pile_link_tmp = pile_link_create(piece_v);
     if(pile_empty(pile_list_v)){
         pile_list_v->last = pile_link_tmp;
@@ -53,7 +53,7 @@ void pile_list_add(pile_list_t * pile_list_v, piece_t piece_v){
  */
 pile_link_t * pile_list_extract(pile_list_t * pile_list_v){
     pile_link_t * res;
-	
+
 	res = NULL;
     if(!pile_empty(pile_list_v)){
         res=pile_list_v->first;
@@ -74,7 +74,7 @@ pile_link_t * pile_list_extract(pile_list_t * pile_list_v){
  */
 pile_list_t * pile_create(){
     pile_list_t * res;
-	
+
 	res = (pile_list_t*)malloc(sizeof(pile_list_t));
     res->first = NULL;
     res->last = NULL;
@@ -125,9 +125,9 @@ void pile_stacking(pile_list_t * pile_list_v, piece_t piece){
  */
 piece_t pile_unstacking(pile_list_t * pile_list_v){
     pile_link_t * pile_link_tmp;
-	
+
 	pile_link_tmp = pile_list_extract(pile_list_v);
     piece_t res = pile_link_tmp->piece;
-    pile_list_extract(pile_link_tmp);
+    pile_list_extract(pile_link_tmp); /* Need Warning fix */
     return res;
 }
