@@ -20,13 +20,16 @@
 piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v){
     
     /* Variables */
+    
     piece_t res;
     
     /* Initialize */
+    
     res.color = piece_color_v;
     res.type  = piece_type_v;
     
     /* Main */
+    
     return res;
 }
 
@@ -35,6 +38,7 @@ piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v){
  *
  * @return int
  */
+ 
 int piece_couleur(piece_t piece_v){
     
     /* Main */
@@ -46,9 +50,11 @@ int piece_couleur(piece_t piece_v){
  *
  * @return struct piece_s
  */
+ 
 piece_t piece_identifier(char caracter_v){
     
     /* Main */
+    
     if(caracter_v<=90 && caracter_v>=65){
         switch(caracter_v){
             {
@@ -113,9 +119,11 @@ piece_t piece_identifier(char caracter_v){
  *
  * @return int
  */
+ 
 char piece_caractere(piece_t piece_v){
     
     /* Main */
+    
     if(!piece_couleur(piece_v)){
         switch(piece_v.type){
             {
@@ -194,8 +202,10 @@ char piece_caractere(piece_t piece_v){
 /**
  * piece displayer
  */
+ 
 void piece_afficher(piece_t piece_v){
     
     /* Main */
+    
     printf("%c", piece_caractere(piece_v));
 }

@@ -21,6 +21,7 @@
  * 1. movement.c
  *    1.1 movement.h
  */
+ 
 void depalcement_valide();
 int movement_valid_helper();
 int movement_valid_input();

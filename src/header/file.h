@@ -21,12 +21,14 @@
 #include"game.h"
 
 /* @section 1.1 coordinate */
+
 typedef struct coordinate_s{
     int x;
     int y;
 }coordinate_t;
 
 /* @section 1.2 file link */
+
 typedef struct movment_s{
     int value;
     coordinate_t input;
@@ -34,12 +36,14 @@ typedef struct movment_s{
 } movement_t;
 
 /* @section 1. file link */
+
 typedef struct file_link_s{
     movement_t movement;
     struct file_link_s * next;
 }file_link_t;
 
 /* @section 2. file list */
+
 typedef struct file_list_s{
     file_link_t * first;
     file_link_t * last;
@@ -52,6 +56,7 @@ typedef struct file_list_s{
  * 1. file.c
  *    1.1 file.h
  */
+ 
 file_link_t * file_link_create();
 void file_link_destruct();
 

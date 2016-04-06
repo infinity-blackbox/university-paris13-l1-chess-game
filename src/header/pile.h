@@ -19,12 +19,14 @@
 #include"piece.h"
 
 /* @section 1. pile link */
+
 typedef struct pile_link_s{
     piece_t piece;
     struct pile_link_s * next;
 }pile_link_t;
 
 /* @section 2. pile list */
+
 typedef struct pile_list_s{
     pile_link_t * first;
     pile_link_t * last;
@@ -37,6 +39,7 @@ typedef struct pile_list_s{
  * 1. pile.c
  *    1.1 pile_list.h
  */
+ 
 pile_link_t * pile_link_create();
 void pile_link_destruct();
 

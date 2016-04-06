@@ -42,15 +42,14 @@ void debug_file(game_t * game_v){
     printf("Longueur: %d\n", file_list_tmp->length);
     
     if(!file_empty(file_list_tmp)){
-        for(file_link_tmp = file_list_tmp->first, i = 0; file_link_tmp != NULL; i++, file_link_tmp = file_link_tmp->next){
-            printf("Maillon %d | ", i);
-			printf("(%d;%d) ", file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
-            printf("(%d;%d)\n", file_link_tmp->movement.ouput.x, file_link_tmp->movement.ouput.y);
+        for(file_link_tmp   =   file_list_tmp->first,    i = 0;     file_link_tmp != NULL; i++, file_link_tmp = file_link_tmp->next){
+            printf("Maillon %d | "  , i);
+			printf("(%d;%d) "       , file_link_tmp->movement.input.x, file_link_tmp->movement.input.y);
+            printf("(%d;%d)\n"      , file_link_tmp->movement.ouput.x, file_link_tmp->movement.ouput.y);
         }
-    }else{
+    }   else    {
         printf("La file ne contient rien.");
     }
-    
     printf("\n");
 }
 
@@ -73,7 +72,7 @@ void debug_pile(game_t * game_v){
             piece_afficher(pile_link_tmp->piece);
             printf("' (%d;%d)\n",pile_link_tmp->piece.type, pile_link_tmp->piece.color);
         }
-    }else{
+    }   else    {
         printf("La pile ne contient rien.");
     }
     
@@ -81,22 +80,24 @@ void debug_pile(game_t * game_v){
 }
 
 
-/**
- * game new
- */
+/** * game new  */
+
 game_t * debug_game(){
 
     /* Variables */
+    
     game_t * res;
 
     /* Initialize */
-	res = partie_creer();
-    res->catched = pile_create();
-    res->played = file_create();
-    res->player = 0;
+	
+    res =   partie_creer();
+    res ->  catched = pile_create();
+    res ->  played = file_create();
+    res ->  player = 0;
     
     /* Main */
     /* Empty */
+    
     for(x=0; x<8; x++){
         for(y=0; y<8; y++){
             res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);

@@ -21,6 +21,7 @@
  * 1. debug.c
  *    1.1 debug.h
  */
+ 
 void debug_location();
 void debug_file();
 void debug_pile();

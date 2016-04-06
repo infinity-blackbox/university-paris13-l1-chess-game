@@ -19,6 +19,7 @@
 #include"piece.h"
 
 /* @section 1. game */
+
 typedef struct game_s{
     piece_t board[8][8];
     file_list_t * played;
@@ -32,6 +33,7 @@ typedef struct game_s{
  * 1. game.c
  *    1.1 game.h
  */
+ 
  int case_vide();
  void modifier_case();
  void changer_joueur();
