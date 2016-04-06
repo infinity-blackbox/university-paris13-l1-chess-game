@@ -28,7 +28,7 @@ return 0;
 
 /* ---- REVERTED CHANGE BY RAKIB ---- */
 /* Data input level 1 */
-    char game_command[20] = "";
+    char game_command[MAX_CHAR] = "";
 
 /**
  * cell editing
@@ -249,6 +249,7 @@ game_t * partie_nouvelle(){
 
     /* King */
     res->board[7][4] = piece_creer(BLACK_PIECE, KING);
+    res->board[4][5] = piece_creer(BLACK_PIECE, KING);
     res->board[0][4] = piece_creer(WHITE_PIECE, KING);
     return res;
 }

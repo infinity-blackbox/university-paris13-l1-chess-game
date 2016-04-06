@@ -79,7 +79,7 @@
         }
         {
             case 5:
-            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("Le roi a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -89,7 +89,7 @@
         }
         {
             case 6:
-            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("La reine a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -204,36 +204,37 @@ int deplacement_valide_cavalier(coordinate_t coordinate_input_v,coordinate_t coo
  *
  * @return int
  */
- 
+
  /* Check */
 
 int check (game_t * game_v,coordinate_t coordinate_output_v){
     if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
         return 1;
     } else {
-        return 0; 
+        return 0;
     }
 }
- 
+
 int deplacement_valide_four(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
-    
+
     int movement_1_tmp      =   (coordinate_output_v.x + coordinate_output_v.y);
     int movement_2_tmp      =   (coordinate_input_v.x+coordinate_input_v.y);
     int movement_1_bis_tmp  =   (coordinate_input_v.x-coordinate_input_v.y);
     int movement_2_bis_tmp  =   (coordinate_output_v.x-coordinate_output_v.y);
-    
+
 
     if(movement_1_tmp == movement_2_tmp || movement_2_bis_tmp == movement_1_bis_tmp  ){
+            /*
       check(game_v,coordinate_output_v);
-      
-       
+  */
+
        /*  return 1, */
         /* Check if case are \0 */
         /* -------PROTOTYPE-----*/
         /*while( != ){
             return 1;
         }*/
-        /* return 1; */
+    return 1;
     }
     return 0;
 }
@@ -324,7 +325,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 5:
-            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
@@ -333,7 +334,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 6:
-            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
                 return 1;
             }else{
                 return 0;

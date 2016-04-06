@@ -20,7 +20,7 @@ void debug_file(game_t * game_v){
     int i;
     file_list_t * file_list_tmp;
     file_link_t * file_link_tmp;
-	
+
 	file_list_tmp = game_v->played;
 
     printf("DEBUG | File\n");
@@ -42,7 +42,7 @@ void debug_pile(game_t * game_v){
     int i;
     pile_list_t * pile_list_tmp;
     pile_link_t * pile_link_tmp;
-	
+
 	pile_list_tmp = game_v->catched;
 
     printf("DEBUG | Pile\n");
@@ -58,4 +58,30 @@ void debug_pile(game_t * game_v){
         printf("La pile ne contient rien.");
     }
     printf("\n");
+}
+
+
+/**
+ * game new
+ */
+game_t * debug_game(){
+    int x, y;
+    game_t * res;
+
+    /* Initialize */
+	res = partie_creer();
+    res->catched = pile_create();
+    res->played = file_create();
+    res->player = 0;
+
+    /* Empty */
+    for(x=0; x<8; x++){
+        for(y=0; y<8; y++){
+            res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
+            res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
+        }
+    }
+
+    res->board[4][4] = piece_creer(WHITE_PIECE, QUEEN);
+    return res;
 }

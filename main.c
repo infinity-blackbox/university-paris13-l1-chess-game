@@ -13,7 +13,7 @@
 #include"src/loader.h"
 
 int main(){
-    game_t * game_new=partie_nouvelle();
+    game_t * game_new=debug_game();
     partie_jouer(game_new);
     return EXIT_SUCCESS;
 }
