@@ -14,28 +14,34 @@
 #include"loader.h"
 #define MAX_CHAR 20
 
+/* ---- REVERTED CHANGE BY RAKIB ---- */
+/* Data input level 1 */
+    char game_command[MAX_CHAR] = "";
+
 /**
  * empty cell detector
  *
  * @return int
  */
 int case_vide(piece_t piece_v){
+
+    /* Main */
     if(piece_v.type == EMPTY){
         return 1;
     }
+
 return 0;
 }
-
-/* ---- REVERTED CHANGE BY RAKIB ---- */
-/* Data input level 1 */
-    char game_command[MAX_CHAR] = "";
 
 /**
  * cell editing
  */
 void modifier_case(game_t * game_v, piece_t * piece_v, coordinate_t coordinate_v){
+
+    /* Variable */
     piece_t res;
 
+    /* Main */
 	res = piece_creer(piece_v->color,piece_v->type);
     game_v->board[coordinate_v.x][coordinate_v.y] = res;
 }
@@ -44,28 +50,41 @@ void modifier_case(game_t * game_v, piece_t * piece_v, coordinate_t coordinate_v
  * player switcher
  */
 void changer_joueur(game_t * game_v){
+
+    /* Main */
     if(game_v->player == 1){
         game_v->player = 0;
     }else{
         game_v->player = 1;
     }
+
 }
 
 /**
  * player piece move
  */
 void depalcement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
+
+    /* Variables */
     movement_t game_movement_tmp;
 
+    /* Initialize */
     game_movement_tmp.input = coordinate_input_v;
     game_movement_tmp.ouput = coordinate_output_v;
+
+    /* Main */
     if(!case_vide(game_v->board[coordinate_input_v.x][coordinate_input_v.y])){
+
+        /* Piece output presence check */
         if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
         }
+
+        /* Piece switch */
         game_v->board[coordinate_output_v.x][coordinate_output_v.y] = game_v->board[coordinate_input_v.x][coordinate_input_v.y];
         game_v->board[coordinate_input_v.x][coordinate_input_v.y] = piece_creer(EMPTY_PIECE, EMPTY);
+
         file_thread(game_v->played, game_movement_tmp);
         changer_joueur(game_v);
     }
@@ -75,7 +94,10 @@ void depalcement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t 
  * player piece back
  */
 void annuler_deplacement(game_t * game_v){
+
+    /* Main */
     file_unthread(game_v->played);
+
 }
 
 /**
@@ -84,28 +106,46 @@ void annuler_deplacement(game_t * game_v){
  * @return struct coordinate_s
  */
 coordinate_t saisie_case(){
+
+    /* Variables */
     coordinate_t res;
     char * p, s[100];
 
+    /* Main */
     printf("x: ");
+
     while (fgets(s, sizeof(s), stdin)) {
+
         res.x = strtol(s, &p, 10);
+
         if (p == s || *p != '\n') {
             printf("x: ");
-        } else break;
+        }else{
+            break;
+        }
+
     }
+
     printf("y: ");
+
     while (fgets(s, sizeof(s), stdin)) {
+
         res.y = strtol(s, &p, 10);
+
         if (p == s || *p != '\n') {
             printf("y: ");
-        } else break;
+        }else{
+            break;
+        }
+
     }
+
     if(res.x >0 && res.x < 8){
         if(res.y >0 && res.y < 8){
             return res;
         }
     }
+
     return res;
 }
 
@@ -113,12 +153,16 @@ coordinate_t saisie_case(){
  * chess displayer
  */
 void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
+
+    /* Variables */
     int x, y;
     coordinate_t game_output_tmp;
 
+    /* Main */
     /* Interface */
     printf("\n");
     printf("                      0  1  2  3  4  5  6  7\n");
+
     for(x=0; x<8; x++){
         if(x<6 && x>1){
             printf("                   %d  ", x);
@@ -137,22 +181,26 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
         }
 
         /* Selection detector */
-        if(game_input_tmp.x != '\0' || game_input_tmp.y != '\0'){ /* Fixed warning */
+        if(game_input_tmp.x != '\0' || game_input_tmp.y != '\0'){
             /* Chess board */
             for(y=0; y<8; y++){
                 game_output_tmp.x = x;
                 game_output_tmp.y = y;
+
                 if(movement_valid_helper(game_v, game_input_tmp, game_output_tmp)){
                     if(game_v->board[x][y].type == EMPTY){
                         game_v->board[x][y].type = SELECT;
                     }
                 }
+
                 piece_afficher(game_v->board[x][y]);
+
                 if(movement_valid_helper(game_v, game_input_tmp, game_output_tmp)){
                     if(game_v->board[x][y].type == SELECT){
                         game_v->board[x][y].type = EMPTY;
                     }
                 }
+
                 printf("  ");
             }
         }else{
@@ -173,7 +221,10 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
  * @return struct game_s
  */
 game_t * partie_creer(){
+
+    /* Variables */
     game_t * res;
+
     return res = (game_t*)malloc(sizeof(game_t));
 }
 
@@ -181,6 +232,8 @@ game_t * partie_creer(){
  * game destructor
  */
 void partie_detruire(game_t * game_v){
+
+    /* Main */
     free(game_v);
 }
 
@@ -202,14 +255,16 @@ void partie_charger(char game_path_v[]){
  * game new
  */
 game_t * partie_nouvelle(){
+
+    /* Variables */
     int x, y;
     game_t * res;
 
     /* Initialize */
-	res = partie_creer();
+	res          = partie_creer();
     res->catched = pile_create();
-    res->played = file_create();
-    res->player = 0;
+    res->played  = file_create();
+    res->player  = 0;
 
     /* Empty */
     for(x=0; x<8; x++){
@@ -251,6 +306,7 @@ game_t * partie_nouvelle(){
     res->board[7][4] = piece_creer(BLACK_PIECE, KING);
     res->board[4][5] = piece_creer(BLACK_PIECE, KING);
     res->board[0][4] = piece_creer(WHITE_PIECE, KING);
+
     return res;
 }
 
@@ -258,13 +314,17 @@ game_t * partie_nouvelle(){
  * game separator
  */
 void game_seperator(){
+
+    /* Main */
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 /**
  * game select
  */
-int game_selector(char game_command[MAX_CHAR], char select_v[MAX_CHAR]){ /* --- SPELL FIX AND TYPE FIX --- */
+int game_selector(char game_command[MAX_CHAR], char select_v[MAX_CHAR]){
+
+    /* Main */
     if(strcmp(game_command, select_v) == 0){
 		return 1;
 	}else{
@@ -281,7 +341,7 @@ void partie_jouer(game_t * game_v){
     coordinate_t SELECT_NULL;
 
     /* Data input level 1 */
-    char game_command[MAX_CHAR];
+    char game_command[MAX_CHAR] = "";
 
     /* Data input level 2 */
     coordinate_t game_input_tmp, game_output_tmp;
@@ -292,13 +352,13 @@ void partie_jouer(game_t * game_v){
     int game_command_dev;
     int game_play;
 
-    SELECT_NULL.x = '\0'; /* Fixed Warning */
-    SELECT_NULL.y = '\0'; /* Fixed Warning */
+    /* Initialize */
+    SELECT_NULL.x    = '\0';
+    SELECT_NULL.y    = '\0';
 	game_command_dev = 0;
-	game_play = 1;
+	game_play        = 1;
 
     /* Main */
-
     /* First chess board display*/
     printf("Je suis une poire.");
     game_seperator();
@@ -310,6 +370,7 @@ void partie_jouer(game_t * game_v){
 
     /* Main loop */
     while(game_play){
+
         /* Command input */
         printf("Entrer une commande: ");
         scanf("%19s", game_command);
@@ -348,7 +409,7 @@ void partie_jouer(game_t * game_v){
             game_seperator();
 
             printf("Les commandes developpeur sont active,\nsaisissez 'help' pour en savoir plus sur les commandes.\n");
-            game_command_dev=1;
+            game_command_dev = 1;
 
             /* Enter loop */
             afficher_echiquier(game_v, SELECT_NULL);

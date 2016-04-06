@@ -24,7 +24,7 @@
     switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].type){
         {
             case 1:
-            if(deplacement_valide_pion(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_pion(game_v, coordinate_input_v,coordinate_output_v)){
                 if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE){
                     if(movement_pawn_tmp == 1 || (movement_pawn_tmp <=2 && movement_pawn_tmp > 0)){
                         depalcement(game_v, coordinate_input_v, coordinate_output_v);
@@ -49,7 +49,7 @@
         }
         {
             case 2:
-            if(deplacement_valide_tour(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_tour(game_v, coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("La tour a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -59,7 +59,7 @@
         }
         {
             case 3:
-            if(deplacement_valide_cavalier(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_cavalier(game_v, coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("Le cavalier a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -69,7 +69,7 @@
         }
         {
             case 4:
-            if(deplacement_valide_four(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_four(game_v, coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("Le four a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -79,7 +79,7 @@
         }
         {
             case 5:
-            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_reine(game_v, coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("Le roi a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -89,7 +89,7 @@
         }
         {
             case 6:
-            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_roi(game_v, coordinate_input_v,coordinate_output_v)){
                 depalcement(game_v, coordinate_input_v, coordinate_output_v);
                 printf("La reine a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
@@ -138,8 +138,8 @@ int movement_valid_output(game_t * game_v, coordinate_t coordinate_v){
  *
  * @return int
  */
-int deplacement_valide_pion(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
-    int movement_tmp=coordinate_output_v.x-coordinate_input_v.x;
+int deplacement_valide_pion(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
+    int movement_tmp = coordinate_output_v.x-coordinate_input_v.x;
 
     if(coordinate_input_v.x == 1 || coordinate_input_v.x == 6){
         /* horizontal checking */
@@ -173,7 +173,7 @@ int deplacement_valide_pion(coordinate_t coordinate_input_v,coordinate_t coordin
  *
  * @return int
  */
-int deplacement_valide_tour(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
+int deplacement_valide_tour(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
     if(coordinate_input_v.y == coordinate_output_v.y || coordinate_input_v.x == coordinate_output_v.x){
         return 1;
     }
@@ -185,7 +185,7 @@ int deplacement_valide_tour(coordinate_t coordinate_input_v,coordinate_t coordin
  *
  * @return int
  */
-int deplacement_valide_cavalier(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
+int deplacement_valide_cavalier(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
     if(coordinate_input_v.x-1 == coordinate_output_v.x || coordinate_input_v.x+1 == coordinate_output_v.x){
         if(coordinate_input_v.y-2 == coordinate_output_v.y || coordinate_input_v.y+2 == coordinate_output_v.y){
             return 1;
@@ -207,15 +207,15 @@ int deplacement_valide_cavalier(coordinate_t coordinate_input_v,coordinate_t coo
 
  /* Check */
 
-int check (game_t * game_v,coordinate_t coordinate_output_v){
+int check (game_t * game_v, coordinate_t coordinate_output_v){
     if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
         return 1;
-    } else {
+    }else{
         return 0;
     }
 }
 
-int deplacement_valide_four(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
+int deplacement_valide_four(game_t * game_v, coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
 
     int movement_1_tmp      =   (coordinate_output_v.x + coordinate_output_v.y);
     int movement_2_tmp      =   (coordinate_input_v.x+coordinate_input_v.y);
@@ -244,7 +244,7 @@ int deplacement_valide_four(coordinate_t coordinate_input_v,coordinate_t coordin
  *
  * @return int
  */
-int deplacement_valide_roi(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
+int deplacement_valide_roi(game_t * game_v, coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
     /* vertical checking */
     if(coordinate_input_v.x-1 == coordinate_output_v.x || coordinate_input_v.x+1 == coordinate_output_v.x){
         if(coordinate_input_v.y-1 == coordinate_output_v.y || coordinate_input_v.y+1 == coordinate_output_v.y){
@@ -259,8 +259,8 @@ int deplacement_valide_roi(coordinate_t coordinate_input_v,coordinate_t coordina
  *
  * @return int
  */
-int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
-    if(deplacement_valide_four(coordinate_input_v,coordinate_output_v) || deplacement_valide_tour(coordinate_input_v,coordinate_output_v)){
+int deplacement_valide_reine(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
+    if(deplacement_valide_four(game_v, coordinate_input_v, coordinate_output_v) || deplacement_valide_tour(game_v, coordinate_input_v, coordinate_output_v)){
         return 1;
     }
     return 0;
@@ -271,13 +271,13 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
  *
  * @return int
  */
- int movement_valid_helper(game_t * game_v,coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
+ int movement_valid_helper(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
     int movement_pawn_tmp=coordinate_output_v.x-coordinate_input_v.x;
 
     switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].type){
         {
             case 1:
-            if(deplacement_valide_pion(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_pion(game_v, coordinate_input_v,coordinate_output_v)){
                 if(game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE){
                     if(movement_pawn_tmp == 1 || (movement_pawn_tmp <=2 && movement_pawn_tmp > 0)){
                         return 1;
@@ -298,7 +298,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 2:
-            if(deplacement_valide_tour(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_tour(game_v, coordinate_input_v, coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
@@ -307,7 +307,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 3:
-            if(deplacement_valide_cavalier(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_cavalier(game_v, coordinate_input_v, coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
@@ -316,7 +316,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 4:
-            if(deplacement_valide_four(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_four(game_v, coordinate_input_v, coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
@@ -325,7 +325,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 5:
-            if(deplacement_valide_reine(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_reine(game_v, coordinate_input_v,coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
@@ -334,7 +334,7 @@ int deplacement_valide_reine(coordinate_t coordinate_input_v,coordinate_t coordi
         }
         {
             case 6:
-            if(deplacement_valide_roi(coordinate_input_v,coordinate_output_v)){
+            if(deplacement_valide_roi(game_v, coordinate_input_v, coordinate_output_v)){
                 return 1;
             }else{
                 return 0;
