@@ -24,5 +24,5 @@
 void debug_location();
 void debug_file();
 void debug_pile();
-
+game_t * debug_game();
 #endif
