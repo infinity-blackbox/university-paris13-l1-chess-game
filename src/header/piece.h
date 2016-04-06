@@ -10,6 +10,7 @@
  * @category Piece Header
  * @author William Phetsinorath
  *         Rakib Sheikh
+ *		   Sabri Rezak Salem
  */
 
 #ifndef DEF_STRUCTURE_PIECE

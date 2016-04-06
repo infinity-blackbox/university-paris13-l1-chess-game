@@ -1,12 +1,12 @@
 /**
-* @since 4.0
-* @version 4.6
-*
-* @package Chess Game
-* @category Main
-* @author William Phetsinorath
-*         Rakib Sheikh
-*/
+ * @version 4.8
+ *
+ * @package Chess Game
+ * @category Piece Main
+ * @author William Phetsinorath
+ *         Rakib Sheikh
+ *		   Sabri Rezak Salem
+ */
 
 #include<stdio.h>
 #include<stdlib.h>
