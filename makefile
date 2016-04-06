@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS= -g -Wall -ansi -pedantic -O3
-FILES=src/file.o src/game.o src/movement.o src/piece.o src/pile.o src/debug.o src/file.o main.o
+FILES=src/file.o src/game.o src/movement.o src/piece.o src/pile.o src/debug.o main.o
 PROG=Chess
 
 all:$(FILES)
@@ -17,7 +17,5 @@ pile.o: pile.c
 	gcc -c $(CFLAGS) src/pile.c
 debug.o: debug.c
 	gcc -c $(CFLAGS) src/debug.c
-file.o: file.c
-    gcc -c $(CFLAGS) src/file.c 
  main.o: main.c
 	gcc -c $(CFLAGS) main.c
