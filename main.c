@@ -13,13 +13,13 @@
 #include"src/loader.h"
 
 int main(){
-    
+
     /* Main */
     game_t * game_new;
-    
+
     /* Initialize */
     game_new = partie_nouvelle();
-    
+
     /* Main */
     partie_jouer(game_new);
     return EXIT_SUCCESS;
