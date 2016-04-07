@@ -26,9 +26,8 @@
     switch(game_v->board[coordinate_input_v.x][coordinate_input_v.y].type){
         {
             case 1:
-            if(deplacement_valide_pion(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
-                printf("La tour a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
+            if(deplacement_valide_pion(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
+                printf("Le pion a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
                 printf("Le deplacement a echouer.\n");
             }
@@ -36,8 +35,7 @@
         }
         {
             case 2:
-            if(deplacement_valide_tour(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
+            if(deplacement_valide_tour(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
                 printf("La tour a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
                 printf("Le deplacement a echouer.\n");
@@ -46,8 +44,7 @@
         }
         {
             case 3:
-            if(deplacement_valide_cavalier(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
+            if(deplacement_valide_cavalier(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
                 printf("Le cavalier a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
                 printf("Le deplacement a echouer.\n");
@@ -56,9 +53,10 @@
         }
         {
             case 4:
-            if(deplacement_valide_four(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
+            if(deplacement_valide_four(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
+                
                 printf("Le four a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
+                
             }else{
                 printf("Le deplacement a echouer.\n");
             }
@@ -66,8 +64,8 @@
         }
         {
             case 5:
-            if(deplacement_valide_reine(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
+            if(deplacement_valide_reine(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
+                
                 printf("Le roi a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
                 printf("Le deplacement a echouer.\n");
@@ -76,8 +74,8 @@
         }
         {
             case 6:
-            if(deplacement_valide_roi(game_v, coordinate_input_v,coordinate_output_v)){
-                depalcement(game_v, coordinate_input_v, coordinate_output_v);
+            if(deplacement_valide_roi(game_v, coordinate_input_v,coordinate_output_v) && (depalcement(game_v, coordinate_input_v, coordinate_output_v))){
+                
                 printf("La reine a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x,coordinate_input_v.y,coordinate_output_v.x,coordinate_output_v.y);
             }else{
                 printf("Le deplacement a echouer.\n");

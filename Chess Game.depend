@@ -141,7 +141,7 @@
 
 1459978786 c:\users\noobzik\desktop\dev-chess\src\header\piece.h
 
-1459978786 c:\users\noobzik\desktop\dev-chess\src\header\game.h
+1460061838 c:\users\noobzik\desktop\dev-chess\src\header\game.h
 	"file.h"
 	"pile.h"
 	"piece.h"
@@ -166,12 +166,12 @@
 	<stdlib.h>
 	"loader.h"
 
-1459978786 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
+1460061330 source:c:\users\noobzik\desktop\dev-chess\src\movement.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1459978786 source:c:\users\noobzik\desktop\dev-chess\src\piece.c
+1460059314 source:c:\users\noobzik\desktop\dev-chess\src\piece.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
@@ -181,7 +181,7 @@
 	<stdlib.h>
 	"loader.h"
 
-1460055225 source:c:\users\noobzik\desktop\dev-chess\src\game.c
+1460060359 source:c:\users\noobzik\desktop\dev-chess\src\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -37,7 +37,8 @@ typedef struct game_s{
  int case_vide();
  void modifier_case();
  void changer_joueur();
- void depalcement();
+ int depalcement();
+ void move_apply();
  void annuler_deplacement();
 
  coordinate_t saisie_case();
