@@ -98,9 +98,11 @@ void depalcement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t 
 
         /* Piece output presence check */
 
-        if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
+        if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])    &&    (game_v->[coordinate_output_v.x][coordinate_output_v.y]->piece_v->color != game_v->[coordinate_input_v.x][coordinate_input_v.y]->piece_v->color) ){
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
+        } else {
+            printf("\nDEBUG FIX ATTEMPT : Movement impossible\n");
         }
 
         /* Piece switch */
