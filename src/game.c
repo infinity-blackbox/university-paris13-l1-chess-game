@@ -167,7 +167,7 @@ coordinate_t saisie_case(){
         res.x = strtol(s, &p, 10);
 
         if (p == s || *p != '\n') {
-            printf("x5: ");
+            printf("x: ");
         }   else    {
                 break;
         }
