@@ -153,7 +153,7 @@ coordinate_t saisie_case(){
     char        *   p, s[100];
 
     /* Main */
-    printf("x: ");
+    /*printf("x: ");*/
 
     while (fgets(s, sizeof(s), stdin)) {
         res.x = strtol(s, &p, 10);
