@@ -188,6 +188,9 @@ int deplacement_valide_pion(game_t * game_v, coordinate_t coordinate_input_v, co
             }
             return 0;
         }
+        
+        /* Diagonal Meat eater */
+        
         if((game_v->board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE) && (game_v->board[coordinate_output_v.x][coordinate_output_v.y].color == BLACK_PIECE)){
             return 1;
         }
