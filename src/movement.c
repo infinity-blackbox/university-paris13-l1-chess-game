@@ -248,19 +248,6 @@ int deplacement_valide_cavalier(game_t * game_v, coordinate_t coordinate_input_v
  * @return int
  */
 
- /* Check */
-
-int check (game_t * game_v, coordinate_t coordinate_output_v){
-
-    /* Main */
-
-    if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
 int deplacement_valide_four(game_t * game_v, coordinate_t coordinate_input_v,coordinate_t coordinate_output_v){
 
     /* Variables */
@@ -330,6 +317,23 @@ int deplacement_valide_reine(game_t * game_v, coordinate_t coordinate_input_v, c
     }
 
     return 0;
+}
+
+/**
+ * movement empty checking
+ *
+ * @return int
+ */
+
+int movement_empty(game_t * game_v, coordinate_t coordinate_output_v){
+
+    /* Main */
+
+    if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])){
+        return 1;
+    }else{
+        return 0;
+    }
 }
 
 /**

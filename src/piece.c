@@ -209,15 +209,3 @@ void piece_afficher(piece_t piece_v){
 
     printf("%c", piece_caractere(piece_v));
 }
-
-/* Color checker */
-
-int color_checker(piece_t piece_v){
-
-    /* Main */
-
-    if(piece_v.color == BLACK_PIECE){
-        return 0;
-    }
-    return 1;
-}
