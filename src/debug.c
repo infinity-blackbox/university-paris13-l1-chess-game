@@ -105,8 +105,8 @@ game_t * debug_game(){
         }
     }
 
-    res->board[3][3] = piece_creer(WHITE_PIECE, PAWN);
-    res->board[4][4] = piece_creer(BLACK_PIECE, PAWN);
+    res->board[3][3] = piece_creer(WHITE_PIECE, ROCK);
+    res->board[3][5] = piece_creer(BLACK_PIECE, PAWN);
 
     return res;
 }
