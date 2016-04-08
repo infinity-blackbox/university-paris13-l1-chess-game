@@ -18,18 +18,18 @@
  */
     /* Variables */
     int i, x, y;
-    
+
 void debug_location(){
-    
+
     /* Initialize */
     x = rand();
-    
+
     /* Main */
     printf("DEBUG | Working there %d.", x);
 }
 
 void debug_file(game_t * game_v){
-    
+
     /* Variables */
     file_list_t * file_list_tmp;
     file_link_t * file_link_tmp;
@@ -40,7 +40,7 @@ void debug_file(game_t * game_v){
     /* Main */
     printf("DEBUG | File\n");
     printf("Longueur: %d\n", file_list_tmp->length);
-    
+
     if(!file_empty(file_list_tmp)){
         for(file_link_tmp   =   file_list_tmp->first,    i = 0;     file_link_tmp != NULL; i++, file_link_tmp = file_link_tmp->next){
             printf("Maillon %d | "  , i);
@@ -54,7 +54,7 @@ void debug_file(game_t * game_v){
 }
 
 void debug_pile(game_t * game_v){
-    
+
     /* Variables */
     pile_list_t * pile_list_tmp;
     pile_link_t * pile_link_tmp;
@@ -65,7 +65,7 @@ void debug_pile(game_t * game_v){
     /* Main */
     printf("DEBUG | Pile\n");
     printf("Taille: %d\n",pile_list_tmp->length);
-    
+
     if(!pile_empty(pile_list_tmp)){
         for(pile_link_tmp = pile_list_tmp->first, i = 0; pile_link_tmp != NULL; i++, pile_link_tmp = pile_link_tmp->next){
             printf("Maillon %d | '", i);
@@ -75,7 +75,7 @@ void debug_pile(game_t * game_v){
     }   else    {
         printf("La pile ne contient rien.");
     }
-    
+
     printf("\n");
 }
 
@@ -85,19 +85,19 @@ void debug_pile(game_t * game_v){
 game_t * debug_game(){
 
     /* Variables */
-    
+
     game_t * res;
 
     /* Initialize */
-	
+
     res =   partie_creer();
     res ->  catched = pile_create();
     res ->  played = file_create();
     res ->  player = 0;
-    
+
     /* Main */
     /* Empty */
-    
+
     for(x=0; x<8; x++){
         for(y=0; y<8; y++){
             res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
@@ -105,7 +105,8 @@ game_t * debug_game(){
         }
     }
 
-    res->board[4][4] = piece_creer(WHITE_PIECE, ROCK);
-    
+    res->board[3][3] = piece_creer(WHITE_PIECE, PAWN);
+    res->board[4][4] = piece_creer(BLACK_PIECE, PAWN);
+
     return res;
 }

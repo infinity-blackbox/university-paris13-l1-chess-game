@@ -18,7 +18,7 @@ int main(){
     game_t * game_new;
 
     /* Initialize */
-    game_new = partie_nouvelle();
+    game_new = debug_game();
 
     /* Main */
     partie_jouer(game_new);
