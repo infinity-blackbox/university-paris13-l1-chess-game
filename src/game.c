@@ -157,13 +157,13 @@ coordinate_t saisie_case(){
     do{
          res.x = strtol(s, &p, 10);
 
-        if (p == s || *p != '\n') {
-            printf("x5: ");
-        }   else    {
+        if(p == s || *p != '\n'){
+            printf("x: ");
+        }else{
                 break;
         }
     }
-    while (fgets(s, sizeof(s), stdin)); /* {
+    while(fgets(s, sizeof(s), stdin)); /* {
         res.x = strtol(s, &p, 10);
 
         if (p == s || *p != '\n') {
@@ -174,12 +174,12 @@ coordinate_t saisie_case(){
     }*/
     printf("y: ");
 
-    while (fgets(s, sizeof(s), stdin)) {
+    while(fgets(s, sizeof(s), stdin)){
         res.y = strtol(s, &p, 10);
-        if (p == s || *p != '\n') {
+        if (p == s || *p != '\n'){
             printf("y: ");
-        }   else    {
-                break;
+        }else{
+            break;
         }
     }
 
@@ -246,7 +246,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
 
                 printf("  ");
             }
-        }   else    {
+        }else{
 
             /* Chess board */
             for(y=0; y<8; y++){

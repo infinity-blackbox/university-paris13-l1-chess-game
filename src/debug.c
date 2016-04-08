@@ -12,7 +12,6 @@
 #include<stdlib.h>
 #include"loader.h"
 
-
 /**
  * global
  */
@@ -106,7 +105,7 @@ game_t * debug_game(){
     }
 
     res->board[3][3] = piece_creer(WHITE_PIECE, ROCK);
-    res->board[3][5] = piece_creer(BLACK_PIECE, PAWN);
+    res->board[4][3] = piece_creer(BLACK_PIECE, ROCK);
 
     return res;
 }
