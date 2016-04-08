@@ -86,12 +86,12 @@ void changer_joueur(game_t * game_v){
  */
 
 void move_apply(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v){
-        
+
         game_v  ->board[coordinate_output_v.x][coordinate_output_v.y]   = game_v->board[coordinate_input_v.x][coordinate_input_v.y];
         game_v  ->board[coordinate_input_v.x][coordinate_input_v.y]     = piece_creer(EMPTY_PIECE, EMPTY);
-        
+
         /* Piece switch */
-        
+
         file_thread(game_v->played, game_movement_tmp);
         changer_joueur(game_v);
 }
@@ -113,12 +113,12 @@ int depalcement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t c
         if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])    &&    color_checker(game_v->board[coordinate_output_v.x][coordinate_output_v.y]) != color_checker(game_v->board[coordinate_input_v.x][coordinate_input_v.y]) ){
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
-            
+
             /* Apply movement */
             move_apply(game_v, coordinate_input_v, coordinate_output_v);
-            /* Validate movement*/        
+            /* Validate movement*/
             validator = 1;
-            
+
         } else if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y])    &&    color_checker(game_v->board[coordinate_output_v.x][coordinate_output_v.y]) == color_checker(game_v->board[coordinate_input_v.x][coordinate_input_v.y])){
             validator = 0;
         } else {
@@ -256,7 +256,6 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
         }
         printf("\n");
     }
-    printf("\n\n\n\n");
 }
 
 /**
