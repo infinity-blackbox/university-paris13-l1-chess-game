@@ -154,9 +154,8 @@ coordinate_t saisie_case(){
 
     /* Main */
     /*printf("x: ");*/
-
-    while (fgets(s, sizeof(s), stdin)) {
-        res.x = strtol(s, &p, 10);
+    do{
+         res.x = strtol(s, &p, 10);
 
         if (p == s || *p != '\n') {
             printf("x5: ");
@@ -164,6 +163,15 @@ coordinate_t saisie_case(){
                 break;
         }
     }
+    while (fgets(s, sizeof(s), stdin)); /* {
+        res.x = strtol(s, &p, 10);
+
+        if (p == s || *p != '\n') {
+            printf("x5: ");
+        }   else    {
+                break;
+        }
+    }*/
     printf("y: ");
 
     while (fgets(s, sizeof(s), stdin)) {
