@@ -24,13 +24,7 @@
     coordinate_t    game_input_tmp, game_output_tmp;
     movement_t      game_movement_tmp;
     /* Hack */
-    coordinate_t    COORDINATE_NULL = {'\0', '\0'};
-
-    /* Initialize */
-    /*
-    COORDINATE_NULL.x    = '\0';
-    COORDINATE_NULL.y    = '\0';
-    */
+    coordinate_t    COORDINATE_NULL = {42, 42};
 
 /**
  * empty cell detector
@@ -203,7 +197,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
     printf("\n");
     printf("                      0  1  2  3  4  5  6  7\n");
 
-    for(x=0; x<8; x++){
+    for(x = 0; x<8; x++){
         if(x<6 && x>1){
             printf("                   %d  ", x);
         }else if(x<6){
@@ -222,11 +216,11 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
 
         /* Selection detector */
 
-        if(game_input_tmp.x != '\0' || game_input_tmp.y != '\0'){
+        if(game_input_tmp.x != 42 || game_input_tmp.y != 42){
 
             /* Chess board */
 
-            for(y=0; y<8; y++){
+            for(y = 0; y<8; y++){
                 game_output_tmp.x = x;
                 game_output_tmp.y = y;
 
@@ -249,7 +243,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp){
         }else{
 
             /* Chess board */
-            for(y=0; y<8; y++){
+            for(y = 0; y<8; y++){
                 piece_afficher(game_v->board[x][y]);
                 printf("  ");
             }

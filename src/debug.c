@@ -104,8 +104,7 @@ game_t * debug_game(){
         }
     }
 
-    res->board[3][3] = piece_creer(WHITE_PIECE, ROCK);
-    res->board[4][3] = piece_creer(BLACK_PIECE, ROCK);
+    res->board[0][0] = piece_creer(WHITE_PIECE, ROCK);
 
     return res;
 }
