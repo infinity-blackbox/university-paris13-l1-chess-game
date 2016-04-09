@@ -108,3 +108,36 @@ game_t * debug_game(){
 
     return res;
 }
+
+game_t * debug_radar(){
+
+    /* Variables */
+
+    game_t * res;
+
+    /* Initialize */
+
+    res =   partie_creer();
+    res ->  catched = pile_create();
+    res ->  played = file_create();
+    res ->  player = 0;
+
+    /* Main */
+    /* Empty */
+
+    for(x=0; x<8; x++){
+        for(y=0; y<8; y++){
+            res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
+            res->board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
+        }
+    }
+
+    res->board[3][3] = piece_creer(BLACK_PIECE, ROCK);
+    
+    res->board[3][1] = piece_creer(WHITE_PIECE, PAWN);
+    res->board[3][5] = piece_creer(WHITE_PIECE, PAWN);
+    res->board[1][3] = piece_creer(WHITE_PIECE, PAWN);
+    res->board[5][3] = piece_creer(WHITE_PIECE, PAWN);
+
+    return res;
+}
