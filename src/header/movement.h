@@ -9,6 +9,7 @@
  * @category Movement Header
  * @author William Phetsinorath
  *         Rakib Sheikh
+ *		   Sabri Rezak Salem
  */
 
 #ifndef DEF_STRUCTURE_MOVEMENT
@@ -20,6 +21,7 @@
  * 1. movement.c
  *    1.1 movement.h
  */
+
 void depalcement_valide();
 int movement_valid_helper();
 int movement_valid_input();
@@ -30,5 +32,7 @@ int deplacement_valide_cavalier();
 int deplacement_valide_four();
 int deplacement_valide_roi();
 int deplacement_valide_reine();
+int movement_empty();
+int movement_valid_helper();
 
 #endif
