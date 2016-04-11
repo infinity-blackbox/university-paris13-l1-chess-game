@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -g -Wall -ansi -pedantic -O3 `pkg-config --cflags --libs gtk+-2.0`
+CFLAGS= -g -Wall -std=c99 -pedantic -O3
 FILES=src/file.o src/game.o src/movement.o src/piece.o src/pile.o src/debug.o main.o
 PROG=Chess
 
