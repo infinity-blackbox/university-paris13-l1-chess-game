@@ -187,7 +187,7 @@
 	<string.h>
 	"loader.h"
 
-1460416492 source:c:\users\shika\dev-chess\main.c
+1460419167 source:c:\users\shika\dev-chess\main.c
 	<stdio.h>
 	<stdlib.h>
 	"src/loader.h"
@@ -228,7 +228,7 @@
 	<stdlib.h>
 	"loader.h"
 
-1460417844 source:c:\users\shika\dev-chess\src\game.c
+1460418773 source:c:\users\shika\dev-chess\src\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

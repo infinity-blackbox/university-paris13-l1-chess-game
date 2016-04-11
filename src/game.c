@@ -517,7 +517,18 @@ void partie_jouer(game_t * game_v)
 
         /* Command input */
         printf("Entrer une commande: ");
-        scanf("%19s", game_command);
+
+        if(scanf("%19s", game_command) != 1){
+            /* Separator */
+            game_seperator();
+
+            printf("Entrer au moins un caractere.\n");
+
+            /* Enter loop */
+            afficher_echiquier(game_v, COORDINATE_NULL);
+            printf("\n\n\n");
+        }
+
         fflush(stdin);
 
         /* Help command */
@@ -791,7 +802,17 @@ void partie_jouer(game_t * game_v)
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n");
             printf("Etes vous sur de quitter sans sauvegarder? (oui/non)\n");
-            scanf("%19s", game_exit_confirmation);
+
+            if(scanf("%19s", game_exit_confirmation) != 1){
+                /* Separator */
+                game_seperator();
+
+                printf("Entrer au moins un caractere.\n");
+
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+                printf("\n\n\n");
+            }
 
             if(strcmp(game_exit_confirmation,"oui") == 0)
             {
