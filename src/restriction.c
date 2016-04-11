@@ -26,9 +26,9 @@ coordinate_t movement_checker_tmp;
  */
 void movement_restriction(game_t * game_v, coordinate_t coordinate_input_v)
 {
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     switch(game_v -> board[coordinate_input_v.x][coordinate_input_v.y].type)
     {
         {
@@ -78,14 +78,14 @@ void movement_restriction(game_t * game_v, coordinate_t coordinate_input_v)
  */
 void movement_restriction_general(game_t * game_v, coordinate_t coordinate_input_v)
 {
-	//======================================================================
-	// Variables
-	//======================================================================
+    //======================================================================
+    // Variables
+    //======================================================================
     int x, y;
 
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     for    (x = 0; x < 8; x++)
     {
         movement_checker_tmp.x = x;
@@ -119,9 +119,9 @@ void movement_restriction_general(game_t * game_v, coordinate_t coordinate_input
  */
 void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
 {
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     for(movement_checker_tmp.x = coordinate_input_v.x+1; game_v -> board[movement_checker_tmp.x][coordinate_input_v.y].type == EMPTY && movement_checker_tmp.x < 8; movement_checker_tmp.x++)
     {
         game_v -> board[movement_checker_tmp.x][coordinate_input_v.y].type = SELECT;
@@ -153,9 +153,9 @@ void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
  */
 void movement_restriction_bishop(game_t * game_v, coordinate_t coordinate_input_v)
 {
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     for(movement_checker_tmp.x = coordinate_input_v.x+1, movement_checker_tmp.y = coordinate_input_v.y+1; game_v -> board[movement_checker_tmp.x][movement_checker_tmp.y].type == EMPTY && movement_checker_tmp.x < 8 && movement_checker_tmp.y < 8; movement_checker_tmp.x++, movement_checker_tmp.y++)
     {
         game_v -> board[movement_checker_tmp.x][movement_checker_tmp.y].type = SELECT;
@@ -187,9 +187,9 @@ void movement_restriction_bishop(game_t * game_v, coordinate_t coordinate_input_
  */
 void movement_restriction_queen(game_t * game_v, coordinate_t coordinate_input_v)
 {
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     movement_restriction_bishop(game_v, coordinate_input_v);
     movement_restriction_rock  (game_v, coordinate_input_v);
 }
@@ -202,14 +202,14 @@ void movement_restriction_queen(game_t * game_v, coordinate_t coordinate_input_v
  */
 void movement_restriction_destruct(game_t * game_v)
 {
-	//======================================================================
-	// Variables
-	//======================================================================
+    //======================================================================
+    // Variables
+    //======================================================================
     int x, y;
 
-	//======================================================================
-	// Main
-	//======================================================================
+    //======================================================================
+    // Main
+    //======================================================================
     for(x = 0; x < 8; x++)
     {
 

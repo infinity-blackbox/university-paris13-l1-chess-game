@@ -710,14 +710,50 @@ void partie_jouer(game_t * game_v)
         }
         else if(game_selector(game_command, "save"))
         {
+            /* Separator */
+            game_seperator();
+
+            /* Enter loop */
+            afficher_echiquier(game_v, COORDINATE_NULL);
+            printf("\n\n\n");
+
+            printf("Entrer le nom de la partie:");
+            if(scanf("%19s", game_save_name) != 1){
+                /* Separator */
+                game_seperator();
+
+                printf("Entrer au moins un caractere.\n");
+                game_command_dev = 1;
+
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+                printf("\n\n\n");
+            };
 
             /* Separator */
             game_seperator();
 
-            printf("Entrer le nom de la partie:");
-            scanf("%19s", game_save_name);
+            /* Enter loop */
+            afficher_echiquier(game_v, COORDINATE_NULL);
+            printf("\n\n\n");
+
             printf("Entrer l'emplacement de la sauvegarder:");
-            scanf("%19s", game_save_path_v);
+
+            if(scanf("%19s", game_save_path_v) != 1){
+                /* Separator */
+                game_seperator();
+
+                printf("Entrer au moins un caractere.\n");
+                game_command_dev = 1;
+
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+                printf("\n\n\n");
+            };
+
+            /* Separator */
+            game_seperator();
+
             partie_sauvegarder(game_v, game_save_name, game_save_path_v);
 
             /* Exit loop */
