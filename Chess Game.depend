@@ -218,7 +218,7 @@
 
 1460408606 c:\users\shika\dev-chess\src\header\debug.h
 
-1460409279 source:c:\users\shika\dev-chess\src\debug.c
+1460409823 source:c:\users\shika\dev-chess\src\debug.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
@@ -228,7 +228,7 @@
 	<stdlib.h>
 	"loader.h"
 
-1460409620 source:c:\users\shika\dev-chess\src\game.c
+1460410429 source:c:\users\shika\dev-chess\src\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -192,10 +192,10 @@ coordinate_t saisie_case()
         }
     }
 
-    if    (res.x > 0 && res.x < 8)
+    if    ((res.x > 0 && res.x < 8) || res.x == 42)
     {
 
-        if(res.y > 0 && res.y < 8)
+        if((res.y > 0 && res.y < 8) || res.y == 42)
         {
             return res;
         }
@@ -644,27 +644,29 @@ void partie_jouer(game_t * game_v)
                 printf("\n\n\n");
                 game_input_tmp = saisie_case();
             }
-            while(!movement_valid_input(game_v, game_input_tmp));
+            while(game_input_tmp.x != 42 && game_input_tmp.y != 42 && !movement_valid_input(game_v, game_input_tmp));
 
-            printf("\n");
+            if((game_input_tmp.x != 42 || game_input_tmp.y != 42) && !game_command_dev){
+                printf("\n");
 
-            /* Output */
-            do
-            {
-                /* Separator */
-                game_seperator();
-                printf("Vous avez selectionner la piece '");
-                piece_afficher(game_v->board[game_input_tmp.x][game_input_tmp.y]);
-                printf("' de coordonnees (%d;%d).", game_input_tmp.x, game_input_tmp.y);
-                printf("\nSaisir les coordonnees du movement:\n");
+                /* Output */
+                do
+                {
+                    /* Separator */
+                    game_seperator();
+                    printf("Vous avez selectionner la piece '");
+                    piece_afficher(game_v->board[game_input_tmp.x][game_input_tmp.y]);
+                    printf("' de coordonnees (%d;%d).", game_input_tmp.x, game_input_tmp.y);
+                    printf("\nSaisir les coordonnees du movement:\n");
 
-                /* Enter loop */
-                afficher_echiquier(game_v,game_input_tmp);
-                printf("\n\n\n");
-                game_output_tmp = saisie_case();
+                    /* Enter loop */
+                    afficher_echiquier(game_v,game_input_tmp);
+                    printf("\n\n\n");
+                    game_output_tmp = saisie_case();
+                }
+                while(!movement_valid_output(game_v, game_output_tmp));
+
             }
-            while(!movement_valid_output(game_v, game_output_tmp));
-
             /* Separator */
             game_seperator();
             depalcement_valide(game_v, game_input_tmp, game_output_tmp);
