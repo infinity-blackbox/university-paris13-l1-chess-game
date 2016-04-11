@@ -30,8 +30,9 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 	//======================================================================
 	// Main
 	//======================================================================
-    if((coordinate_input_v.x != coordinate_output_v.x || coordinate_input_v.y != coordinate_output_v.y) && game_v -> board[coordinate_output_v.x][coordinate_output_v.y].type == SELECT)
+    if((coordinate_input_v.x != coordinate_output_v.x || coordinate_input_v.y != coordinate_output_v.y) && (game_v -> board[coordinate_input_v.x][coordinate_input_v.y].color != game_v -> board[coordinate_output_v.x][coordinate_output_v.y].color))
     {
+
         switch(game_v -> board[coordinate_input_v.x][coordinate_input_v.y].type)
         {
             {
@@ -39,7 +40,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_pion(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("Le poin a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -54,7 +55,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_tour(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("La tour a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -69,7 +70,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_cavalier(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("Le cavalier a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -84,7 +85,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_four(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("Le four a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -99,7 +100,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_reine(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("La reine a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -114,7 +115,7 @@ void depalcement_valide(game_t * game_v, coordinate_t coordinate_input_v, coordi
 
                 if(deplacement_valide_roi(game_v, coordinate_input_v, coordinate_output_v))
                 {
-                    depalcement(game_v, coordinate_input_v, coordinate_output_v);
+                    deplacement(game_v, coordinate_input_v, coordinate_output_v);
                     printf("Le roi a ete deplace de (%d;%d) a (%d;%d) avec succes.\n",coordinate_input_v.x, coordinate_input_v.y, coordinate_output_v.x,coordinate_output_v.y);
                 }
                 else
@@ -267,11 +268,11 @@ int deplacement_valide_pion(game_t * game_v, coordinate_t coordinate_input_v, co
 
         /* Diagonal Meat eater */
 
-        if     ((game_v -> board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE) && (game_v->board[coordinate_output_v.x][coordinate_output_v.y].color == BLACK_PIECE))
+        if     ((game_v -> board[coordinate_input_v.x][coordinate_input_v.y].color == WHITE_PIECE) && (game_v -> board[coordinate_output_v.x][coordinate_output_v.y].color == BLACK_PIECE))
         {
             return 1;
         }
-        else if((game_v -> board[coordinate_input_v.x][coordinate_input_v.y].color == BLACK_PIECE) && (game_v->board[coordinate_output_v.x][coordinate_output_v.y].color == WHITE_PIECE))
+        else if((game_v -> board[coordinate_input_v.x][coordinate_input_v.y].color == BLACK_PIECE) && (game_v -> board[coordinate_output_v.x][coordinate_output_v.y].color == WHITE_PIECE))
         {
             return 1;
         }
@@ -367,7 +368,7 @@ int deplacement_valide_four(game_t * game_v, coordinate_t coordinate_input_v, co
     movement_2_tmp     = (coordinate_input_v.x+coordinate_input_v.y);
     movement_1_bis_tmp = (coordinate_input_v.x-coordinate_input_v.y);
     movement_2_bis_tmp = (coordinate_output_v.x-coordinate_output_v.y);
-	
+
 	//======================================================================
 	// Main
 	//======================================================================
