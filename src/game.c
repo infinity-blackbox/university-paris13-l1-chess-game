@@ -62,7 +62,7 @@ void modifier_case(game_t * game_v, piece_t * piece_v, coordinate_t coordinate_v
 
     /* Initialize */
     res   = piece_creer(piece_v -> color, piece_v -> type);
-	
+
 	//======================================================================
 	// Main
 	//======================================================================
@@ -157,14 +157,14 @@ coordinate_t saisie_case()
 	//======================================================================
 	// Variables
 	//======================================================================
-    coordinate_t    res;
-    char        *   p, s[100];
+    coordinate_t res;
+    char *       p, s[100];
 
 	//======================================================================
 	// Main
 	//======================================================================
     printf("x: ");
-	
+
     while(fgets(s, sizeof(s), stdin)){
         res.x = strtol(s, &p, 10);
 
@@ -176,7 +176,7 @@ coordinate_t saisie_case()
             break;
         }
     }
-	
+
     printf("y: ");
 
     while(fgets(s, sizeof(s), stdin))
@@ -194,11 +194,14 @@ coordinate_t saisie_case()
 
     if    (res.x > 0 && res.x < 8)
     {
+
         if(res.y > 0 && res.y < 8)
         {
             return res;
         }
+
     }
+
     return res;
 }
 
@@ -237,7 +240,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp)
             {
                 printf("                   %d  ", x);
             }
-			
+
         }
         else if(x > 1)
         {
@@ -250,7 +253,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp)
             {
                 printf("                   %d  ", x);
             }
-			
+
         }
 
         /* Selection detector */
@@ -316,7 +319,7 @@ void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
 	//======================================================================
 	// Main
 	//======================================================================
-	
+
 }
 
 /**
@@ -330,7 +333,7 @@ void partie_charger(char game_path_v[])
 	//======================================================================
 	// Main
 	//======================================================================
-	
+
 }
 
 /**
@@ -357,13 +360,13 @@ game_t * partie_nouvelle()
     /* Empty */
     for    (x = 0; x < 8; x++)
     {
-		
+
         for(y = 0; y < 8; y++)
         {
             res -> board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
             res -> board[y][x] = piece_creer(EMPTY_PIECE, EMPTY);
         }
-		
+
     }
 
     /* Pawn */
@@ -500,7 +503,7 @@ void partie_jouer(game_t * game_v)
                 printf("PASS                  Passe le tour du joueur.\n");
                 printf("FILE                  Affiche lse donnes contenu dans la file.\n");
                 printf("PILE                  Affiche les donnes contenu dans la pile.\n");
-                printf("CLEAR                 Detruit toute les donnes contenu les bases de donnees.\n");
+                printf("CELL                  Affiche les détails d'une cellule.\n");
             }
             else
             {
@@ -541,7 +544,7 @@ void partie_jouer(game_t * game_v)
 
             /* Separator */
             game_seperator();
-			
+
             changer_joueur(game_v);
 
             /* Enter loop */
@@ -578,19 +581,21 @@ void partie_jouer(game_t * game_v)
 
         /* Developper command clear */
         }
-        else if(game_selector(game_command, "clear") && game_command_dev)
+        else if(game_selector(game_command, "cell") && game_command_dev)
         {
+            /* Input */
+            /* Separator */
+            game_seperator();
+            printf("Saisir les coordonnees d'une piece:\n");
+
+            /* Enter loop */
+            afficher_echiquier(game_v, COORDINATE_NULL);
+            printf("\n\n\n");
+            game_input_tmp = saisie_case();
 
             /* Separator */
             game_seperator();
-
-            /* pile destruct */
-            pile_destruct(game_v -> catched);
-            game_v -> catched = pile_create();
-
-            /* file destruct */
-            file_destruct(game_v -> played);
-            game_v -> played  = file_create();
+            debug_cell(game_v, game_input_tmp);
 
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);

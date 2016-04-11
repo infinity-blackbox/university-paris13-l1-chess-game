@@ -25,7 +25,7 @@ typedef struct game_s{
     piece_t       board[8][8];
     file_list_t * played;
     pile_list_t * catched;
-    int player;
+    int           player;
 } game_t;
 
 

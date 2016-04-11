@@ -89,7 +89,7 @@ void debug_pile(game_t * game_v)
         {
             printf("Maillon %d | '", i);
             piece_afficher(          pile_link_tmp -> piece);
-            printf("' (%d;%d)\n",    pile_link_tmp -> piece.type, pile_link_tmp -> piece.color);
+            printf("' (Type: %d; Joueur: %d)\n",    pile_link_tmp -> piece.type, pile_link_tmp -> piece.color);
         }
 
     }
@@ -101,7 +101,22 @@ void debug_pile(game_t * game_v)
     printf("\n");
 }
 
-
+/**
+ * debug game
+ *
+ * Parameters:
+ *     game_t - game_v
+ */
+ void debug_cell(game_t * game_v, coordinate_t coordinate_v){
+	//======================================================================
+	// Main
+	//======================================================================
+    printf("DEBUG | Cellule\n");
+    printf("Piece: ");
+    piece_afficher(game_v -> board[coordinate_v.x][coordinate_v.y]);
+    printf(" (%d; %d)", coordinate_v.x, coordinate_v.y);
+    printf("\nJoueur: %d",game_v -> board[coordinate_v.x][coordinate_v.y].color);
+ }
 
 /**
  * debug game
