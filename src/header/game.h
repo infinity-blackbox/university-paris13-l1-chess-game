@@ -50,6 +50,7 @@ typedef struct game_s{
 
  void         game_seperator();
  int          game_selector();
+ int          game_exit();
 
  void         partie_jouer();
  void         replay_charger();

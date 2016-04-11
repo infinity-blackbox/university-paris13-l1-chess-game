@@ -187,7 +187,7 @@
 	<string.h>
 	"loader.h"
 
-1460409560 source:c:\users\shika\dev-chess\main.c
+1460416492 source:c:\users\shika\dev-chess\main.c
 	<stdio.h>
 	<stdlib.h>
 	"src/loader.h"
@@ -203,7 +203,7 @@
 
 1460398424 c:\users\shika\dev-chess\src\header\piece.h
 
-1460413254 c:\users\shika\dev-chess\src\header\game.h
+1460418644 c:\users\shika\dev-chess\src\header\game.h
 	"file.h"
 	"pile.h"
 	"piece.h"
@@ -218,7 +218,7 @@
 
 1460408606 c:\users\shika\dev-chess\src\header\debug.h
 
-1460409823 source:c:\users\shika\dev-chess\src\debug.c
+1460416644 source:c:\users\shika\dev-chess\src\debug.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
@@ -228,7 +228,7 @@
 	<stdlib.h>
 	"loader.h"
 
-1460415870 source:c:\users\shika\dev-chess\src\game.c
+1460417844 source:c:\users\shika\dev-chess\src\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -251,7 +251,7 @@
 
 1460398468 c:\users\shika\dev-chess\src\header\restriction.h
 
-1460415089 source:c:\users\shika\dev-chess\src\restriction.c
+1460416626 source:c:\users\shika\dev-chess\src\restriction.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"

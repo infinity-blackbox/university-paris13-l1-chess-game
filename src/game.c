@@ -386,7 +386,6 @@ game_t * partie_nouvelle()
     }
 
     /* Pawn */
-
     for(x = 0; x < 8; x++)
     {
         res     -> board[6][x] = piece_creer(BLACK_PIECE, PAWN);
@@ -436,6 +435,21 @@ void game_seperator()
 	// Main
 	//======================================================================
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+/**
+ * game exit
+ */
+int game_exit(game_t * game_v)
+{
+	//======================================================================
+	// Main
+	//======================================================================
+	file_destruct(game_v -> played);
+	pile_destruct(game_v -> catched);
+	partie_detruire(game_v);
+
+    return 0;
 }
 
 /**
@@ -713,6 +727,8 @@ void partie_jouer(game_t * game_v)
             /* Separator */
             game_seperator();
 
+            printf("Sauvegarde.\n");
+
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n\n");
@@ -728,7 +744,7 @@ void partie_jouer(game_t * game_v)
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
                 printf("\n\n\n");
-            };
+            }
 
             /* Separator */
             game_seperator();
@@ -749,7 +765,7 @@ void partie_jouer(game_t * game_v)
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
                 printf("\n\n\n");
-            };
+            }
 
             /* Separator */
             game_seperator();
@@ -758,7 +774,8 @@ void partie_jouer(game_t * game_v)
 
             /* Exit loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
-            game_play = 0;
+
+            game_play = game_exit(game_v);
 
         /* Exit command */
         }
@@ -767,6 +784,8 @@ void partie_jouer(game_t * game_v)
 
             /* Separator */
             game_seperator();
+
+            printf("Quitter.\n");
 
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
@@ -779,21 +798,65 @@ void partie_jouer(game_t * game_v)
 
                 /* Separator */
                 game_seperator();
-                printf("Merci d'avoir jouer a ce jeu. - William Phetsinorath\n");
+                printf("Merci d'avoir jouer a ce jeu.\n");
 
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
-                printf("\n\n\n");
-                game_play = 0;
+
+                game_play = game_exit(game_v);
             }
             else
             {
                 /* Separator */
                 game_seperator();
 
+                printf("Sauvegarde.\n");
+
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
                 printf("\n\n\n");
+
+                printf("Entrer le nom de la partie:");
+                if(scanf("%19s", game_save_name) != 1){
+                    /* Separator */
+                    game_seperator();
+
+                    printf("Entrer au moins un caractere.\n");
+
+                    /* Enter loop */
+                    afficher_echiquier(game_v, COORDINATE_NULL);
+                    printf("\n\n\n");
+                }
+
+                /* Separator */
+                game_seperator();
+
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+                printf("\n\n\n");
+
+                printf("Entrer l'emplacement de la sauvegarder:");
+
+                if(scanf("%19s", game_save_path_v) != 1){
+                    /* Separator */
+                    game_seperator();
+
+                    printf("Entrer au moins un caractere.\n");
+
+                    /* Enter loop */
+                    afficher_echiquier(game_v, COORDINATE_NULL);
+                    printf("\n\n\n");
+                }
+
+                /* Separator */
+                game_seperator();
+
+                partie_sauvegarder(game_v, game_save_name, game_save_path_v);
+
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+
+                game_play = game_exit(game_v);
             }
 
         /* Unknown command */

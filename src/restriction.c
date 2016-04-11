@@ -132,12 +132,12 @@ void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
         game_v -> board[coordinate_input_v.x][movement_checker_tmp.y].type = SELECT;
     }
 
-    for(movement_checker_tmp.x = coordinate_input_v.x-1; game_v -> board[movement_checker_tmp.x][coordinate_input_v.y].type == EMPTY && movement_checker_tmp.x >= 0; movement_checker_tmp.x--)
+    for(movement_checker_tmp.x = coordinate_input_v.x-1; game_v -> board[movement_checker_tmp.x][coordinate_input_v.y].type == EMPTY && movement_checker_tmp.x > 0; movement_checker_tmp.x--)
     {
         game_v -> board[movement_checker_tmp.x][coordinate_input_v.y].type = SELECT;
     }
 
-    for(movement_checker_tmp.y = coordinate_input_v.y-1; game_v -> board[coordinate_input_v.x][movement_checker_tmp.y].type == EMPTY && movement_checker_tmp.y >= 0; movement_checker_tmp.y--)
+    for(movement_checker_tmp.y = coordinate_input_v.y-1; game_v -> board[coordinate_input_v.x][movement_checker_tmp.y].type == EMPTY && movement_checker_tmp.y > 0; movement_checker_tmp.y--)
     {
         game_v -> board[coordinate_input_v.x][movement_checker_tmp.y].type = SELECT;
     }

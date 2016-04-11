@@ -152,7 +152,8 @@ game_t * debug_game()
 
     }
 
-    res         -> board[4][4] = piece_creer(WHITE_PIECE, ROCK);
+    res         -> board[3][3] = piece_creer(WHITE_PIECE, BISHOP);
+    res         -> board[5][5] = piece_creer(WHITE_PIECE, BISHOP);
 
     return res;
 }

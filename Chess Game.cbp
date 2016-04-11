@@ -46,6 +46,7 @@
 		<Unit filename="src/game.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="src/header/debug.h" />
 		<Unit filename="src/header/file.h" />
 		<Unit filename="src/header/game.h" />
 		<Unit filename="src/header/movement.h" />
