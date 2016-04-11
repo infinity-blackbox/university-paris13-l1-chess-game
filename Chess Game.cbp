@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Chess Game 4.0" />
+		<Option title="Chess Game" />
 		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
@@ -48,10 +48,10 @@
 		</Unit>
 		<Unit filename="src/header/file.h" />
 		<Unit filename="src/header/game.h" />
-		<Unit filename="src/header/link.h" />
 		<Unit filename="src/header/movement.h" />
 		<Unit filename="src/header/piece.h" />
 		<Unit filename="src/header/pile.h" />
+		<Unit filename="src/header/restriction.h" />
 		<Unit filename="src/loader.h" />
 		<Unit filename="src/movement.c">
 			<Option compilerVar="CC" />
@@ -60,6 +60,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="src/pile.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="src/restriction.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
