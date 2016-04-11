@@ -187,3 +187,72 @@
 	<string.h>
 	"loader.h"
 
+1460401050 source:c:\users\shika\dev-chess\main.c
+	<stdio.h>
+	<stdlib.h>
+	"src/loader.h"
+
+1460388127 c:\users\shika\dev-chess\src\loader.h
+	"header/piece.h"
+	"header/game.h"
+	"header/file.h"
+	"header/pile.h"
+	"header/movement.h"
+	"header/debug.h"
+	"header/restriction.h"
+
+1460398424 c:\users\shika\dev-chess\src\header\piece.h
+
+1460398406 c:\users\shika\dev-chess\src\header\game.h
+	"file.h"
+	"pile.h"
+	"piece.h"
+
+1460398401 c:\users\shika\dev-chess\src\header\file.h
+	"game.h"
+
+1460398458 c:\users\shika\dev-chess\src\header\pile.h
+	"piece.h"
+
+1460398409 c:\users\shika\dev-chess\src\header\movement.h
+
+1460398482 c:\users\shika\dev-chess\src\header\debug.h
+
+1460397103 source:c:\users\shika\dev-chess\src\debug.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460397103 source:c:\users\shika\dev-chess\src\file.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460397213 source:c:\users\shika\dev-chess\src\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"loader.h"
+
+1460398118 source:c:\users\shika\dev-chess\src\movement.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460397974 source:c:\users\shika\dev-chess\src\piece.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460397150 source:c:\users\shika\dev-chess\src\pile.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460398468 c:\users\shika\dev-chess\src\header\restriction.h
+
+1460397103 source:c:\users\shika\dev-chess\src\restriction.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
