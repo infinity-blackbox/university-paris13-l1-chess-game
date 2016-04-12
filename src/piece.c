@@ -15,97 +15,114 @@
 /**
  * piece creator
  *
+ * Parameters:
+ *     piece_color_e - piece_color_v
+ *     piece_type_e  - piece_type_v
+ *
  * @return struct piece_s
  */
-piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v){
-
-    /* Variables */
-
+piece_t piece_creer(piece_color_e piece_color_v, piece_type_e piece_type_v)
+{
+	//======================================================================
+	// Variables
+	//======================================================================
     piece_t res;
 
     /* Initialize */
-
     res.color = piece_color_v;
     res.type  = piece_type_v;
 
-    /* Main */
-
+	//======================================================================
+	// Main
+	//======================================================================
     return res;
 }
 
 /**
  * piece color detector
  *
+ * Parameters:
+ *     piece_t - piece_v
+ *
  * @return int
  */
-
-int piece_couleur(piece_t piece_v){
-
-    /* Main */
+int piece_couleur(piece_t piece_v)
+{
+	//======================================================================
+	// Main
+	//======================================================================
     return piece_v.color;
 }
 
 /**
  * piece identifier
  *
+ * Parameters:
+ *     char - caracter_v
+ *
  * @return struct piece_s
  */
-
-piece_t piece_identifier(char caracter_v){
-
-    /* Main */
-
-    if(caracter_v<=90 && caracter_v>=65){
-        switch(caracter_v){
+piece_t piece_identifier(char caracter_v)
+{
+	//======================================================================
+	// Main
+	//======================================================================
+    if(caracter_v <= 90 && caracter_v >= 65)
+    {
+        switch(caracter_v)
+        {
             {
-                case 'P':
+            case 'P':
                 return piece_creer(BLACK_PIECE, PAWN);
             }
             {
-                case 'T':
+            case 'T':
                 return piece_creer(BLACK_PIECE, ROCK);
             }
             {
-                case 'C':
+            case 'C':
                 return piece_creer(BLACK_PIECE, KNIGHT);
             }
             {
-                case 'F':
+            case 'F':
                 return piece_creer(BLACK_PIECE, BISHOP);
             }
             {
-                case 'R':
+            case 'R':
                 return piece_creer(BLACK_PIECE, QUEEN);
             }
             {
-                case 'E':
+            case 'E':
                 return piece_creer(BLACK_PIECE, KING);
             }
-            }
-    }else{
-        switch(caracter_v){
+        }
+    }
+    else
+    {
+        switch(caracter_v)
+        {
             {
-                case 'p':
+            case 'p':
                 return piece_creer(WHITE_PIECE, PAWN);
             }
             {
-                case 't':
+            case 't':
                 return piece_creer(WHITE_PIECE, ROCK);
             }
             {
-                case 'c':
+            case 'c':
                 return piece_creer(WHITE_PIECE, KNIGHT);
             }
             {
-                case 'f':
+            case 'f':
                 return piece_creer(WHITE_PIECE, BISHOP);
             }
             {
-                case 'r':
+            case 'r':
                 return piece_creer(WHITE_PIECE, QUEEN);
             }
             {
-                case 'e':
+            case 'e':
                 return piece_creer(WHITE_PIECE, KING);
             }
         }
@@ -117,80 +134,88 @@ piece_t piece_identifier(char caracter_v){
 /**
  * piece type detector
  *
+ * Parameters:
+ *     piece_t - piece_v
+ *
  * @return int
  */
-
-char piece_caractere(piece_t piece_v){
-
-    /* Main */
-
-    if(!piece_couleur(piece_v)){
-        switch(piece_v.type){
+char piece_caractere(piece_t piece_v)
+{
+	//======================================================================
+	// Main
+	//======================================================================
+    if(!piece_couleur(piece_v))
+    {
+        switch(piece_v.type)
+        {
             {
-                case 1:
+            case 1:
                 return 'P';
             }
             {
-                case 2:
+            case 2:
                 return 'T';
             }
             {
-                case 3:
+            case 3:
                 return 'C';
             }
             {
-                case 4:
+            case 4:
                 return 'F';
             }
             {
-                case 5:
+            case 5:
                 return 'R';
             }
             {
-                case 6:
+            case 6:
                 return 'E';
             }
             {
-                case 7:
+            case 7:
                 return '*';
             }
             {
-                default:
+            default:
                 return '.';
             }
         }
-    }else{
-        switch(piece_v.type){
+    }
+    else
+    {
+        switch(piece_v.type)
+        {
             {
-                case 1:
+            case 1:
                 return 'p';
             }
             {
-                case 2:
+            case 2:
                 return 't';
             }
             {
-                case 3:
+            case 3:
                 return 'c';
             }
             {
-                case 4:
+            case 4:
                 return 'f';
             }
             {
-                case 5:
+            case 5:
                 return 'r';
             }
             {
-                case 6:
+            case 6:
                 return 'e';
             }
             {
-                case 7:
+            case 7:
                 return '*';
             }
             {
-                default:
+            default:
                 return '.';
             }
         }
@@ -201,11 +226,14 @@ char piece_caractere(piece_t piece_v){
 
 /**
  * piece displayer
+ *
+ * Parameters:
+ *     piece_t - piece_v
  */
-
-void piece_afficher(piece_t piece_v){
-
-    /* Main */
-
+void piece_afficher(piece_t piece_v)
+{
+	//======================================================================
+	// Main
+	//======================================================================
     printf("%c", piece_caractere(piece_v));
 }

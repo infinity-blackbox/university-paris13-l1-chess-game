@@ -20,23 +20,19 @@ typedef enum{WHITE_PIECE, BLACK_PIECE, EMPTY_PIECE} piece_color_e;
 typedef enum{EMPTY, PAWN, ROCK, KNIGHT, BISHOP, QUEEN, KING, SELECT} piece_type_e;
 
 /* @section 1. piece */
-
 typedef struct piece_s{
     piece_color_e color;
-    piece_type_e type;
+    piece_type_e  type;
 } piece_t;
 
-/**
- * @section 2 prototype
- *
- * 1. piece.c
- *    1.1 piece.h
- */
- 
+
+//======================================================================
+// Prototype
+//======================================================================
 piece_t piece_creer();
-int piece_couleur();
+int     piece_couleur();
 piece_t piece_identifier(char);
-char piece_caractere();
-void piece_afficher();
+char    piece_caractere();
+void    piece_afficher();
 
 #endif

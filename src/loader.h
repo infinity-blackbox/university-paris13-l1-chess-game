@@ -16,4 +16,5 @@
 #include"header/pile.h"
 #include"header/movement.h"
 #include"header/debug.h"
+#include"header/restriction.h"
 #endif

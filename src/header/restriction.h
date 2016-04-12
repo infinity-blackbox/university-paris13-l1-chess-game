@@ -3,24 +3,27 @@
  *
  * 1. prototype
  *
- * @since 4.6
+ * @since 4.9
  *
  * @package Chess Game
- * @category Debug Header
+ * @category Restriction Header
  * @author William Phetsinorath
  *         Rakib Sheikh
  *		   Sabri Rezak Salem
  */
 
-#ifndef DEF_STRUCTURE_DEBUG
-#define DEF_STRUCTURE_DEBUG
+#ifndef DEF_STRUCTURE_RESTRICTION
+#define DEF_STRUCTURE_RESTRICTION
+
 
 //======================================================================
 // Prototype
 //======================================================================
-void     debug_location();
-void     debug_file();
-void     debug_pile();
-void     debug_cell();
-game_t * debug_game();
+void movement_restriction();
+void movement_restriction_general();
+void movement_restriction_rock();
+void movement_restriction_bishop();
+void movement_restriction_queen();
+void movement_restriction_destruct();
+
 #endif
