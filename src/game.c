@@ -163,6 +163,7 @@ void annuler_deplacement(game_t * game_v)
     if(game_v -> played -> last -> movement.value)
     {
         game_v -> board[game_v -> played -> last -> movement.output.x][game_v -> played -> last -> movement.output.y] = game_v -> catched -> last -> piece;
+        changer_joueur(game_v);
         pile_unstacking(game_v -> catched);
     }
     file_unthread(game_v -> played);
