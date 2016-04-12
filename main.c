@@ -26,7 +26,7 @@
                              @@                                                                                               @@@@
                             ,                                                                                                   @@
 																		 CHESS GAME
-																	    version 5.1
+																	    version 5.3
 
 																	    CONTRUBUTORS:
 															         William Phetsinorath

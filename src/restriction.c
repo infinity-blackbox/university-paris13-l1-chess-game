@@ -127,7 +127,7 @@ void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
     //======================================================================
     // Main
     //======================================================================
-    for(movement_checker_1_tmp.x = coordinate_input_v.x+1; game_v -> board[movement_checker_1_tmp.x][coordinate_input_v.y].type == EMPTY && movement_checker_1_tmp.x < 7; movement_checker_1_tmp.x++)
+    for(movement_checker_1_tmp.x = coordinate_input_v.x+1; movement_checker_1_tmp.x < 7 && game_v -> board[movement_checker_1_tmp.x][coordinate_input_v.y].type == EMPTY; movement_checker_1_tmp.x++)
     {
         game_v -> board[movement_checker_1_tmp.x][coordinate_input_v.y].type = SELECT;
         
@@ -138,7 +138,7 @@ void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
         
     }
 
-    for(movement_checker_2_tmp.y = coordinate_input_v.y+1; game_v -> board[coordinate_input_v.x][movement_checker_2_tmp.y].type == EMPTY && movement_checker_2_tmp.y < 7; movement_checker_2_tmp.y++)
+    for(movement_checker_2_tmp.y = coordinate_input_v.y+1; movement_checker_2_tmp.y < 7 &&  game_v -> board[coordinate_input_v.x][movement_checker_2_tmp.y].type == EMPTY; movement_checker_2_tmp.y++)
     {
         game_v -> board[coordinate_input_v.x][movement_checker_2_tmp.y].type = SELECT;
         
@@ -148,19 +148,21 @@ void movement_restriction_rock(game_t * game_v, coordinate_t coordinate_input_v)
         }
         
     }
-
-    for(movement_checker_3_tmp.x = coordinate_input_v.x-1; game_v -> board[movement_checker_3_tmp.x][coordinate_input_v.y].type == EMPTY && movement_checker_3_tmp.x > 0; movement_checker_3_tmp.x--)
+   
+    for(movement_checker_3_tmp.x = coordinate_input_v.x-1; movement_checker_3_tmp.x > 0 &&  game_v -> board[movement_checker_3_tmp.x][coordinate_input_v.y].type == EMPTY ; movement_checker_3_tmp.x--)
     {
+
+
         game_v -> board[movement_checker_3_tmp.x][coordinate_input_v.y].type = SELECT;
-        
+
         if(movement_checker_3_tmp.x == 1)
         {
             game_v -> board[movement_checker_3_tmp.x-1][coordinate_input_v.y].type = SELECT;
         }
         
     }
-
-    for(movement_checker_4_tmp.y = coordinate_input_v.y-1; game_v -> board[coordinate_input_v.x][movement_checker_4_tmp.y].type == EMPTY && movement_checker_4_tmp.y > 0; movement_checker_4_tmp.y--)
+    
+    for(movement_checker_4_tmp.y = coordinate_input_v.y-1;movement_checker_4_tmp.y > 0 &&  game_v -> board[coordinate_input_v.x][movement_checker_4_tmp.y].type == EMPTY; movement_checker_4_tmp.y--)
     {
         game_v -> board[coordinate_input_v.x][movement_checker_4_tmp.y].type = SELECT;
         
@@ -190,22 +192,22 @@ void movement_restriction_bishop(game_t * game_v, coordinate_t coordinate_input_
     //======================================================================
     // Main
     //======================================================================
-    for(movement_checker_1_tmp.x = coordinate_input_v.x+1, movement_checker_1_tmp.y = coordinate_input_v.y+1; game_v -> board[movement_checker_1_tmp.x][movement_checker_1_tmp.y].type == EMPTY && movement_checker_1_tmp.x < 8 && movement_checker_1_tmp.y < 8; movement_checker_1_tmp.x++, movement_checker_1_tmp.y++)
+    for(movement_checker_1_tmp.x = coordinate_input_v.x+1, movement_checker_1_tmp.y = coordinate_input_v.y+1;movement_checker_1_tmp.x < 8 && movement_checker_1_tmp.y < 8 &&  game_v -> board[movement_checker_1_tmp.x][movement_checker_1_tmp.y].type == EMPTY; movement_checker_1_tmp.x++, movement_checker_1_tmp.y++)
     {
         game_v -> board[movement_checker_1_tmp.x][movement_checker_1_tmp.y].type = SELECT;
     }
 
-    for(movement_checker_2_tmp.x = coordinate_input_v.x-1, movement_checker_2_tmp.y = coordinate_input_v.y-1; game_v -> board[movement_checker_2_tmp.x][movement_checker_2_tmp.y].type == EMPTY && movement_checker_2_tmp.x >= 0 && movement_checker_2_tmp.y >= 0; movement_checker_2_tmp.x--, movement_checker_2_tmp.y--)
+    for(movement_checker_2_tmp.x = coordinate_input_v.x-1, movement_checker_2_tmp.y = coordinate_input_v.y-1; movement_checker_2_tmp.x >= 0 && movement_checker_2_tmp.y >= 0 && game_v -> board[movement_checker_2_tmp.x][movement_checker_2_tmp.y].type == EMPTY; movement_checker_2_tmp.x--, movement_checker_2_tmp.y--)
     {
         game_v -> board[movement_checker_2_tmp.x][movement_checker_2_tmp.y].type = SELECT;
     }
 
-    for(movement_checker_3_tmp.x = coordinate_input_v.x+1, movement_checker_3_tmp.y = coordinate_input_v.y-1; game_v -> board[movement_checker_3_tmp.x][movement_checker_3_tmp.y].type == EMPTY && movement_checker_3_tmp.x < 8 && movement_checker_3_tmp.y >= 0; movement_checker_3_tmp.x++, movement_checker_3_tmp.y--)
+    for(movement_checker_3_tmp.x = coordinate_input_v.x+1, movement_checker_3_tmp.y = coordinate_input_v.y-1; movement_checker_3_tmp.x < 8 && movement_checker_3_tmp.y >= 0 && game_v -> board[movement_checker_3_tmp.x][movement_checker_3_tmp.y].type == EMPTY; movement_checker_3_tmp.x++, movement_checker_3_tmp.y--)
     {
         game_v -> board[movement_checker_3_tmp.x][movement_checker_3_tmp.y].type = SELECT;
     }
 
-    for(movement_checker_4_tmp.x = coordinate_input_v.x-1, movement_checker_4_tmp.y = coordinate_input_v.y+1; game_v -> board[movement_checker_4_tmp.x][movement_checker_4_tmp.y].type == EMPTY && movement_checker_4_tmp.x >= 0 && movement_checker_4_tmp.y < 8; movement_checker_4_tmp.x--, movement_checker_4_tmp.y++)
+    for(movement_checker_4_tmp.x = coordinate_input_v.x-1, movement_checker_4_tmp.y = coordinate_input_v.y+1; movement_checker_4_tmp.x >= 0 && movement_checker_4_tmp.y < 8 && game_v -> board[movement_checker_4_tmp.x][movement_checker_4_tmp.y].type == EMPTY; movement_checker_4_tmp.x--, movement_checker_4_tmp.y++)
     {
         game_v -> board[movement_checker_4_tmp.x][movement_checker_4_tmp.y].type = SELECT;
     }

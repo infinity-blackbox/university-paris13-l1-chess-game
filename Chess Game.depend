@@ -187,12 +187,12 @@
 	<string.h>
 	"loader.h"
 
-1460419167 source:c:\users\shika\dev-chess\main.c
+1460466846 source:c:\users\shika\dev-chess\main.c
 	<stdio.h>
 	<stdlib.h>
 	"src/loader.h"
 
-1460388127 c:\users\shika\dev-chess\src\loader.h
+1460402486 c:\users\shika\dev-chess\src\loader.h
 	"header/piece.h"
 	"header/game.h"
 	"header/file.h"
@@ -201,57 +201,57 @@
 	"header/debug.h"
 	"header/restriction.h"
 
-1460398424 c:\users\shika\dev-chess\src\header\piece.h
+1460412032 c:\users\shika\dev-chess\src\header\piece.h
 
-1460418644 c:\users\shika\dev-chess\src\header\game.h
+1460490319 c:\users\shika\dev-chess\src\header\game.h
 	"file.h"
 	"pile.h"
 	"piece.h"
 
-1460398401 c:\users\shika\dev-chess\src\header\file.h
+1460489101 c:\users\shika\dev-chess\src\header\file.h
 	"game.h"
 
-1460398458 c:\users\shika\dev-chess\src\header\pile.h
+1460412032 c:\users\shika\dev-chess\src\header\pile.h
 	"piece.h"
 
-1460398409 c:\users\shika\dev-chess\src\header\movement.h
+1460412032 c:\users\shika\dev-chess\src\header\movement.h
 
-1460408606 c:\users\shika\dev-chess\src\header\debug.h
+1460422272 c:\users\shika\dev-chess\src\header\debug.h
 
-1460416644 source:c:\users\shika\dev-chess\src\debug.c
+1460489111 source:c:\users\shika\dev-chess\src\debug.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1460397103 source:c:\users\shika\dev-chess\src\file.c
+1460412032 source:c:\users\shika\dev-chess\src\file.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1460418773 source:c:\users\shika\dev-chess\src\game.c
+1460489796 source:c:\users\shika\dev-chess\src\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"loader.h"
 
-1460414412 source:c:\users\shika\dev-chess\src\movement.c
+1460422272 source:c:\users\shika\dev-chess\src\movement.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1460397974 source:c:\users\shika\dev-chess\src\piece.c
+1460412032 source:c:\users\shika\dev-chess\src\piece.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1460397150 source:c:\users\shika\dev-chess\src\pile.c
+1460412032 source:c:\users\shika\dev-chess\src\pile.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"
 
-1460398468 c:\users\shika\dev-chess\src\header\restriction.h
+1460412032 c:\users\shika\dev-chess\src\header\restriction.h
 
-1460416626 source:c:\users\shika\dev-chess\src\restriction.c
+1460465720 source:c:\users\shika\dev-chess\src\restriction.c
 	<stdio.h>
 	<stdlib.h>
 	"loader.h"

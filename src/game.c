@@ -99,23 +99,23 @@ void changer_joueur(game_t * game_v)
  *     coordinate_t - coordinate_input_v
  *     coordinate_t - coordinate_output_v
  */
-int deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v)
+void deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t coordinate_output_v)
 {
 	//======================================================================
 	// Variables
 	//======================================================================
     game_movement_tmp.input = coordinate_input_v;
-    game_movement_tmp.ouput = coordinate_output_v;
-    int movement_validator;
+    game_movement_tmp.output = coordinate_output_v;
 
 	//======================================================================
 	// Main
 	//======================================================================
-    if(!case_vide(game_v->board[coordinate_input_v.x][coordinate_input_v.y])){
+    if(!case_vide(game_v -> board[coordinate_input_v.x][coordinate_input_v.y])){
 
         /* Piece output presence check */
 
-        if      (!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != piece_couleur(game_v -> board[coordinate_input_v.x][coordinate_input_v.y]) ){
+        if(!case_vide(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != piece_couleur(game_v -> board[coordinate_input_v.x][coordinate_input_v.y]) )
+        {
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
 
@@ -125,28 +125,21 @@ int deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t c
 
             /* Piece switch */
 
-            file_thread(game_v->played, game_movement_tmp);
+            file_thread(game_v -> played, game_movement_tmp);
             changer_joueur(game_v);
-
-            /* Validate movement*/
-            movement_validator = 1;
-
-        }else if(!case_vide(game_v->board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) == piece_couleur(game_v -> board[coordinate_input_v.x][coordinate_input_v.y])){
-            movement_validator = 0;
-        }else{
+        }
+        else
+        {
             game_v -> board[coordinate_output_v.x][coordinate_output_v.y]   = game_v -> board[coordinate_input_v.x][coordinate_input_v.y];
             game_v -> board[coordinate_input_v.x][coordinate_input_v.y]     = piece_creer(EMPTY_PIECE, EMPTY);
 
         /* Piece switch */
 
-        file_thread(game_v->played, game_movement_tmp);
+        file_thread(game_v -> played, game_movement_tmp);
         changer_joueur(game_v);
-            movement_validator = 1;
         }
-        return movement_validator;
-    }
 
-    return 0;
+    }
 }
 
 /**
@@ -158,8 +151,20 @@ int deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t c
 void annuler_deplacement(game_t * game_v)
 {
 	//======================================================================
+	// Variables
+	//======================================================================
+	coordinate_t movement_output_tmp = game_v -> played -> last -> movement.output;
+	coordinate_t movement_input_tmp = game_v -> played -> last -> movement.input;
+
+	//======================================================================
 	// Main
 	//======================================================================
+	game_v->board[movement_input_tmp.x][movement_input_tmp.y] = game_v->board[movement_output_tmp.x][movement_output_tmp.y];
+    if(game_v -> played -> last -> movement.value)
+    {
+        game_v -> board[game_v -> played -> last -> movement.output.x][game_v -> played -> last -> movement.output.y] = game_v -> catched -> last -> piece;
+        pile_unstacking(game_v -> catched);
+    }
     file_unthread(game_v -> played);
 }
 
@@ -276,6 +281,7 @@ void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp)
 
         if(game_input_tmp.x != 42 || game_input_tmp.y != 42)
         {
+            //printf("DEBUG ************ %d : %d *******************\n",game_input_tmp.x,game_input_tmp.y);
             movement_restriction(game_v, game_input_tmp);
         }
 
@@ -337,20 +343,20 @@ void partie_detruire(game_t * game_v)
 	//======================================================================
     int res = 0;
     int c;
-    
+
 	//======================================================================
 	// Main
 	//======================================================================
     while((c = fgetc(file_v)) != EOF)
     {
-        
+
         if(c == '\n')
         {
             res++;
         }
-        
+
     }
-    
+
     return(res+1);
  }
 
@@ -371,21 +377,21 @@ void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
     const char game_mod[MAX_CHAR] = "r+";
     int n, x, y;
     char tmp;
-    
+
     /* Initialize */
     n = game_save_line(game_file_tmp);
-    
+
 	//======================================================================
 	// Main
 	//======================================================================
     game_file_tmp = fopen(game_path_v, game_mod);
-    
+
     if(game_file_tmp != NULL)
     {
-        
+
         for    (x = 0; x < n; x++)
         {
-            
+
             for(y = 0; y < n; y++)
             {
                 tmp = piece_caractere(game_v -> board[x][y]);
@@ -394,15 +400,15 @@ void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
                 game_seperator();
 
                 printf("Entrer au moins un caractere.\n");
-                
+
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
                 printf("\n\n\n");
-            } 
             }
-            
+            }
+
         }
-        
+
     }
     else
     {
@@ -562,7 +568,7 @@ void game_buffer()
 	//======================================================================
     do empty_buffer = getchar(); while (empty_buffer != '\n' && empty_buffer != EOF);
 }
- 
+
 /**
  * game play
  *
@@ -576,7 +582,7 @@ void partie_jouer(game_t * game_v)
 	//======================================================================
     char             game_save_name[MAX_CHAR], game_save_path_v[MAX_CHAR];
     char             game_exit_confirmation[MAX_CHAR];
-    
+
     /* Game setting */
     int              game_command_dev;
     int              game_play;
@@ -597,7 +603,7 @@ void partie_jouer(game_t * game_v)
     /* Enter loop */
     afficher_echiquier(game_v, COORDINATE_NULL);
     printf("\n\n\n");
-    
+
     /* Main loop */
     while(game_play)
     {
@@ -657,18 +663,18 @@ void partie_jouer(game_t * game_v)
 
             /* Separator */
             game_seperator();
-            
+
             if(game_command_dev == 0)
             {
                 printf("Les commandes developpeur sont active,\nsaisissez 'help' pour en savoir plus sur les commandes.\n");
-                game_command_dev = 1;    
+                game_command_dev = 1;
             }
             else
             {
                 printf("Les commandes developpeur ont ete desactive.\n");
                 game_command_dev = 0;
             }
-            
+
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n\n");
@@ -820,7 +826,16 @@ void partie_jouer(game_t * game_v)
             /* Separator */
             game_seperator();
 
-            annuler_deplacement(game_v);
+            if(!file_empty(game_v -> played))
+            {
+                printf("L'annulation a ete effectue.\n");
+                annuler_deplacement(game_v);
+            }
+            else
+            {
+                printf("L'annulation a echoue.\n");
+
+            }
 
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);

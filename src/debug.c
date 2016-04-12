@@ -47,7 +47,7 @@ void debug_file(game_t * game_v)
         {
             printf("Maillon %d | ", i);
             printf("(%d;%d) ",      file_link_tmp -> movement.input.x, file_link_tmp -> movement.input.y);
-            printf("(%d;%d)\n",     file_link_tmp -> movement.ouput.x, file_link_tmp -> movement.ouput.y);
+            printf("(%d;%d)\n",     file_link_tmp -> movement.output.x, file_link_tmp -> movement.output.y);
         }
 
     }

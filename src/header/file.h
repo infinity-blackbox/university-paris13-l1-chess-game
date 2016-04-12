@@ -31,7 +31,7 @@ typedef struct coordinate_s{
 typedef struct movment_s{
     int          value;
     coordinate_t input;
-    coordinate_t ouput;
+    coordinate_t output;
 } movement_t;
 
 /* @section 1. file link */
