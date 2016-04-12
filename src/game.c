@@ -185,7 +185,7 @@ coordinate_t saisie_case()
     printf("x: ");
 
     while(fgets(s, sizeof(s), stdin)){
-        res.x = strtol(s, &p, 10);
+        res.y = strtol(s, &p, 10);
 
         if(p == s || *p != '\n') {
             printf("x: ");
@@ -200,7 +200,7 @@ coordinate_t saisie_case()
 
     while(fgets(s, sizeof(s), stdin))
     {
-        res.y = strtol(s, &p, 10);
+        res.x = strtol(s, &p, 10);
         if(p == s || *p != '\n')
         {
             printf("y: ");
@@ -330,12 +330,84 @@ void partie_detruire(game_t * game_v)
  *     char   - game_name_v
  *     char   - game_path_v
  */
-void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
-{
+ int game_save_line(FILE * file_v)
+ {
+	//======================================================================
+	// Variables
+	//======================================================================
+    int res = 0;
+    int c;
+    
 	//======================================================================
 	// Main
 	//======================================================================
+    while((c = fgetc(file_v)) != EOF)
+    {
+        
+        if(c == '\n')
+        {
+            res++;
+        }
+        
+    }
+    
+    return(res+1);
+ }
 
+/**
+ * game save
+ *
+ * Parameters:
+ *     game_t - game_v
+ *     char   - game_name_v
+ *     char   - game_path_v
+ */
+void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
+{
+	//======================================================================
+	// Variables
+	//======================================================================
+    FILE * game_file_tmp = NULL;
+    const char game_mod[MAX_CHAR] = "r+";
+    int n, x, y;
+    char tmp;
+    
+    /* Initialize */
+    n = game_save_line(game_file_tmp);
+    
+	//======================================================================
+	// Main
+	//======================================================================
+    game_file_tmp = fopen(game_path_v, game_mod);
+    
+    if(game_file_tmp != NULL)
+    {
+        
+        for    (x = 0; x < n; x++)
+        {
+            
+            for(y = 0; y < n; y++)
+            {
+                tmp = piece_caractere(game_v -> board[x][y]);
+                if(fscanf(game_file_tmp, "%c", &tmp) != 1){
+                /* Separator */
+                game_seperator();
+
+                printf("Entrer au moins un caractere.\n");
+                
+                /* Enter loop */
+                afficher_echiquier(game_v, COORDINATE_NULL);
+                printf("\n\n\n");
+            } 
+            }
+            
+        }
+        
+    }
+    else
+    {
+        printf("Impossible d'ouvrir le fichier %s.pl", game_name_v);
+    }
 }
 
 /**
@@ -477,6 +549,21 @@ int game_selector(char game_command[MAX_CHAR], char select_v[MAX_CHAR])
 }
 
 /**
+ * game buffer
+ */
+void game_buffer()
+{
+	//======================================================================
+	// Variables
+	//======================================================================
+    char empty_buffer;
+	//======================================================================
+	// Variables
+	//======================================================================
+    do empty_buffer = getchar(); while (empty_buffer != '\n' && empty_buffer != EOF);
+}
+ 
+/**
  * game play
  *
  * Parameters:
@@ -489,7 +576,7 @@ void partie_jouer(game_t * game_v)
 	//======================================================================
     char             game_save_name[MAX_CHAR], game_save_path_v[MAX_CHAR];
     char             game_exit_confirmation[MAX_CHAR];
-
+    
     /* Game setting */
     int              game_command_dev;
     int              game_play;
@@ -510,7 +597,7 @@ void partie_jouer(game_t * game_v)
     /* Enter loop */
     afficher_echiquier(game_v, COORDINATE_NULL);
     printf("\n\n\n");
-
+    
     /* Main loop */
     while(game_play)
     {
@@ -529,7 +616,7 @@ void partie_jouer(game_t * game_v)
             printf("\n\n\n");
         }
 
-        fflush(stdin);
+        game_buffer();
 
         /* Help command */
         if(game_selector(game_command, "help"))
@@ -570,10 +657,18 @@ void partie_jouer(game_t * game_v)
 
             /* Separator */
             game_seperator();
-
-            printf("Les commandes developpeur sont active,\nsaisissez 'help' pour en savoir plus sur les commandes.\n");
-            game_command_dev = 1;
-
+            
+            if(game_command_dev == 0)
+            {
+                printf("Les commandes developpeur sont active,\nsaisissez 'help' pour en savoir plus sur les commandes.\n");
+                game_command_dev = 1;    
+            }
+            else
+            {
+                printf("Les commandes developpeur ont ete desactive.\n");
+                game_command_dev = 0;
+            }
+            
             /* Enter loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n\n");
@@ -699,7 +794,7 @@ void partie_jouer(game_t * game_v)
                 printf("Vous avez selectionner la piece '");
                 piece_afficher(game_v -> board[game_input_tmp.x][game_input_tmp.y]);
                 printf("' de coordonnees (%d;%d) du joueur ", game_input_tmp.x, game_input_tmp.y);
-                printf("%d.", game_v -> board[game_input_tmp.x][game_input_tmp.y].type);
+                printf("%d.", game_v -> board[game_input_tmp.x][game_input_tmp.y].color);
                 printf("\nSaisir les coordonnees du movement:\n");
 
                 /* Enter loop */
@@ -744,7 +839,7 @@ void partie_jouer(game_t * game_v)
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n\n");
 
-            printf("Entrer le nom de la partie:");
+            printf("Entrer le nom de la partie: ");
             if(scanf("%19s", game_save_name) != 1){
                 /* Separator */
                 game_seperator();
@@ -764,14 +859,13 @@ void partie_jouer(game_t * game_v)
             afficher_echiquier(game_v, COORDINATE_NULL);
             printf("\n\n\n");
 
-            printf("Entrer l'emplacement de la sauvegarder:");
+            printf("Entrer l'emplacement de la sauvegarder: ");
 
             if(scanf("%19s", game_save_path_v) != 1){
                 /* Separator */
                 game_seperator();
 
                 printf("Entrer au moins un caractere.\n");
-                game_command_dev = 1;
 
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);
