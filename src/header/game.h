@@ -45,7 +45,8 @@ void         afficher_echiquier();
 game_t *     partie_creer();
 void         partie_detruire();
 void         partie_sauvegarder();
-void         partie_charger();
+
+game_t *     partie_charger();
 game_t *     partie_nouvelle();
 
 void         game_seperator();

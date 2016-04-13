@@ -256,3 +256,125 @@
 	<stdlib.h>
 	"loader.h"
 
+1460489110 source:e:\desktop\chess game v5.3\src\debug.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460402486 e:\desktop\chess game v5.3\src\loader.h
+	"header/piece.h"
+	"header/game.h"
+	"header/file.h"
+	"header/pile.h"
+	"header/movement.h"
+	"header/debug.h"
+	"header/restriction.h"
+
+1460412032 e:\desktop\chess game v5.3\src\header\piece.h
+
+1460490318 e:\desktop\chess game v5.3\src\header\game.h
+	"file.h"
+	"pile.h"
+	"piece.h"
+
+1460489100 e:\desktop\chess game v5.3\src\header\file.h
+	"game.h"
+
+1460412032 e:\desktop\chess game v5.3\src\header\pile.h
+	"piece.h"
+
+1460412032 e:\desktop\chess game v5.3\src\header\movement.h
+
+1460422272 e:\desktop\chess game v5.3\src\header\debug.h
+
+1460412032 e:\desktop\chess game v5.3\src\header\restriction.h
+
+1460412032 source:e:\desktop\chess game v5.3\src\file.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460422272 source:e:\desktop\chess game v5.3\src\movement.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460412032 source:e:\desktop\chess game v5.3\src\piece.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460412032 source:e:\desktop\chess game v5.3\src\pile.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460576144 source:e:\desktop\chess\chess game\5.0\5.3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"src/loader.h"
+
+1460402486 e:\desktop\chess\chess game\5.0\5.3\src\loader.h
+	"header/piece.h"
+	"header/game.h"
+	"header/file.h"
+	"header/pile.h"
+	"header/movement.h"
+	"header/debug.h"
+	"header/restriction.h"
+
+1460579230 e:\desktop\chess\chess game\5.0\5.3\src\header\piece.h
+
+1460574467 e:\desktop\chess\chess game\5.0\5.3\src\header\game.h
+	"file.h"
+	"pile.h"
+	"piece.h"
+
+1460489100 e:\desktop\chess\chess game\5.0\5.3\src\header\file.h
+	"game.h"
+
+1460412032 e:\desktop\chess\chess game\5.0\5.3\src\header\pile.h
+	"piece.h"
+
+1460412032 e:\desktop\chess\chess game\5.0\5.3\src\header\movement.h
+
+1460422272 e:\desktop\chess\chess game\5.0\5.3\src\header\debug.h
+
+1460412032 e:\desktop\chess\chess game\5.0\5.3\src\header\restriction.h
+
+1460573863 source:e:\desktop\chess\chess game\5.0\5.3\src\debug.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460412032 source:e:\desktop\chess\chess game\5.0\5.3\src\file.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460422272 source:e:\desktop\chess\chess game\5.0\5.3\src\movement.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460577530 source:e:\desktop\chess\chess game\5.0\5.3\src\piece.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460412032 source:e:\desktop\chess\chess game\5.0\5.3\src\pile.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460501218 source:e:\desktop\chess\chess game\5.0\5.3\src\restriction.c
+	<stdio.h>
+	<stdlib.h>
+	"loader.h"
+
+1460579215 source:e:\desktop\chess\chess game\5.0\5.3\src\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"loader.h"
+

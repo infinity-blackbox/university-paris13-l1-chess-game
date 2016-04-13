@@ -12,16 +12,11 @@
 #include<stdlib.h>
 #include<string.h>
 #include"loader.h"
-#define MAX_CHAR 20
+#define MAX_CHAR 256
 
 /**
  * global
  */
-int          x, y;
-char         game_command[MAX_CHAR] = "";
-coordinate_t game_input_tmp, game_output_tmp;
-movement_t   game_movement_tmp;
-/* Hack */
 coordinate_t COORDINATE_NULL = {42, 42};
 
 /**
@@ -104,6 +99,7 @@ void deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t 
 	//======================================================================
 	// Variables
 	//======================================================================
+	movement_t                game_movement_tmp;
     game_movement_tmp.input = coordinate_input_v;
     game_movement_tmp.output = coordinate_output_v;
 
@@ -114,7 +110,7 @@ void deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t 
 
         /* Piece output presence check */
 
-        if(!case_vide(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != 2)
+        if(!case_vide(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != piece_couleur(game_v -> board[coordinate_input_v.x][coordinate_input_v.y]) )
         {
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
@@ -163,7 +159,6 @@ void annuler_deplacement(game_t * game_v)
     if(game_v -> played -> last -> movement.value)
     {
         game_v -> board[game_v -> played -> last -> movement.output.x][game_v -> played -> last -> movement.output.y] = game_v -> catched -> last -> piece;
-        changer_joueur(game_v);
         pile_unstacking(game_v -> catched);
     }
     file_unthread(game_v -> played);
@@ -236,6 +231,11 @@ coordinate_t saisie_case()
  */
 void afficher_echiquier(game_t * game_v, coordinate_t game_input_tmp)
 {
+	//======================================================================
+	// Variables
+	//======================================================================
+	int x, y;
+
 	//======================================================================
 	// Main
 	//======================================================================
@@ -337,73 +337,64 @@ void partie_detruire(game_t * game_v)
  *     char   - game_name_v
  *     char   - game_path_v
  */
- int game_save_line(FILE * file_v)
- {
-	//======================================================================
-	// Variables
-	//======================================================================
-    int res = 0;
-    int c;
-
-	//======================================================================
-	// Main
-	//======================================================================
-    while((c = fgetc(file_v)) != EOF)
-    {
-
-        if(c == '\n')
-        {
-            res++;
-        }
-
-    }
-
-    return(res+1);
- }
-
-/**
- * game save
- *
- * Parameters:
- *     game_t - game_v
- *     char   - game_name_v
- *     char   - game_path_v
- */
 void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
 {
 	//======================================================================
 	// Variables
 	//======================================================================
-    FILE * game_file_tmp = NULL;
     int x, y;
-    char game_target_tmp[40];
+    char game_plt_tmp[MAX_CHAR], game_part_tmp[MAX_CHAR];
+    FILE * game_plt_file_tmp, * game_part_file_tmp;
+
+    file_link_t * file_link_tmp;
+    pile_link_t * pile_link_tmp;
 
 	//======================================================================
 	// Main
 	//======================================================================
+	strcpy(game_plt_tmp, "\\Plateaux\\");
+	strcpy(game_plt_tmp, game_path_v);
+	strcpy(game_plt_tmp, "\\");
+	strcpy(game_plt_tmp, game_name_v);
+	strcpy(game_plt_tmp, ".ptl");
 
-    strcat(game_target_tmp, ".ptl");
-    game_file_tmp = fopen(game_name_v, "w");
+    game_plt_file_tmp = fopen(game_plt_tmp, "w+");
 
-    if (game_file_tmp != NULL)
+    for    (x = 0; x < 8; x++)
     {
 
-        for    (x = 0; x < 8; x++)
-      	{
+        for(y = 0; y < 8; y++)
+        {
+            fprintf(game_plt_file_tmp, "%c", piece_caractere(game_v -> board[x][y]));
+        }
 
-		for(y = 0; y < 8; y++)
-		{
-			fprintf(game_file_tmp, "%c", piece_caractere(game_v -> board[x][y]));
-	  	}
-
-	fprintf(game_file_tmp, "\n");
-	}
-
-	fclose(game_file_tmp), game_file_tmp = NULL;
     }
-    else
+    fclose(game_plt_file_tmp);
+
+    strcpy(game_part_tmp, "\\Parties\\");
+    strcpy(game_part_tmp, game_path_v);
+	strcpy(game_plt_tmp, "\\");
+	strcpy(game_plt_tmp, game_name_v);
+	strcpy(game_plt_tmp, ".part");
+
+    game_part_file_tmp = fopen(game_plt_tmp, "w+");
+
+    while(!file_empty(game_v -> played))
     {
-        printf("Impossible d'ouvrir le fichier %s.pl", game_name_v);
+        file_link_tmp = file_list_extract(game_v->played);
+        fprintf(game_part_file_tmp, " %d :", file_link_tmp -> movement.input.x);
+        fprintf(game_part_file_tmp, " %d :", file_link_tmp -> movement.input.y);
+        fprintf(game_part_file_tmp, " %d :", file_link_tmp -> movement.output.x);
+        fprintf(game_part_file_tmp, " %d :", file_link_tmp -> movement.output.y);
+    }
+
+    fprintf(game_part_file_tmp, "\n");
+
+    while(!file_empty(game_v -> played))
+    {
+        pile_link_tmp = pile_list_extract(game_v -> catched);
+        fprintf(game_part_file_tmp, " %d :", pile_link_tmp -> piece.color);
+        fprintf(game_part_file_tmp, " %d :", pile_link_tmp -> piece.type);
     }
 }
 
@@ -413,11 +404,42 @@ void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
  * Parameters:
  *     char - game_path_v
  */
-void partie_charger(char game_path_v[])
+game_t * partie_charger(char game_path_v[])
 {
+	//======================================================================
+	// Variables
+	//======================================================================
+    FILE *   game_file_tmp = NULL;
+    game_t * res = partie_creer();
+    char     game_data_tmp;
+    int x, y;
+
 	//======================================================================
 	// Main
 	//======================================================================
+    game_file_tmp = fopen(game_path_v, "r");
+
+    if(game_file_tmp != NULL)
+    {
+
+        for    (x = 0; x < 8; x++)
+        {
+
+            for(y = 0; y < 8; y++)
+            {
+                fscanf(game_file_tmp, "%c", &game_data_tmp);
+                res -> board[x][y] = piece_identifier(game_data_tmp);
+            }
+
+        }
+
+    }
+    else
+    {
+        printf("Impossible d'ouvrir le fichier %s.part.\n", game_path_v);
+    }
+
+    return res;
 }
 
 /**
@@ -430,6 +452,7 @@ game_t * partie_nouvelle()
 	//======================================================================
 	// Variables
 	//======================================================================
+	int x, y;
     game_t *         res;
 
     /* Initialize */
@@ -570,16 +593,16 @@ void partie_jouer(game_t * game_v)
 	//======================================================================
 	// Variables
 	//======================================================================
-    char             game_save_name[MAX_CHAR], game_save_path_v[MAX_CHAR];
+    char             game_command[MAX_CHAR] = "";
+    char *           game_save_name = malloc (MAX_CHAR);
+    char *           game_save_path = malloc (MAX_CHAR);
     char             game_exit_confirmation[MAX_CHAR];
 
-    /* Game setting */
-    int              game_command_dev;
-    int              game_play;
+    coordinate_t game_input_tmp, game_output_tmp;
 
-    /* Initialize */
-    game_command_dev = 0;
-    game_play        = 1;
+    /* Game setting */
+    int              game_command_dev = 0;
+    int              game_play        = 1;
 
 	//======================================================================
 	// Main
@@ -845,17 +868,7 @@ void partie_jouer(game_t * game_v)
             printf("\n\n\n");
 
             printf("Entrer le nom de la partie: ");
-            if(scanf("%19s", game_save_name) != 1){
-                /* Separator */
-                game_seperator();
-
-                printf("Entrer au moins un caractere.\n");
-                game_command_dev = 1;
-
-                /* Enter loop */
-                afficher_echiquier(game_v, COORDINATE_NULL);
-                printf("\n\n\n");
-            }
+            fgets(game_save_name, MAX_CHAR, stdin);
 
             /* Separator */
             game_seperator();
@@ -866,27 +879,17 @@ void partie_jouer(game_t * game_v)
 
             printf("Entrer l'emplacement de la sauvegarder: ");
 
-            if(scanf("%19s", game_save_path_v) != 1){
-                /* Separator */
-                game_seperator();
-
-                printf("Entrer au moins un caractere.\n");
-
-                /* Enter loop */
-                afficher_echiquier(game_v, COORDINATE_NULL);
-                printf("\n\n\n");
-            }
+            fgets(game_save_path, MAX_CHAR, stdin);
 
             /* Separator */
             game_seperator();
 
-            printf("La partie %s a ete sauvegarder.\n", game_save_name);
+            partie_sauvegarder(game_v, game_save_name, game_save_path);
 
-            partie_sauvegarder(game_v, game_save_name, game_save_path_v);
+            printf("La partie a ete sauvergarder.\n");
 
             /* Exit loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
-            printf("\n\n\n");
 
             game_play = game_exit(game_v);
 
@@ -940,16 +943,7 @@ void partie_jouer(game_t * game_v)
                 printf("\n\n\n");
 
                 printf("Entrer le nom de la partie:");
-                if(scanf("%19s", game_save_name) != 1){
-                    /* Separator */
-                    game_seperator();
-
-                    printf("Entrer au moins un caractere.\n");
-
-                    /* Enter loop */
-                    afficher_echiquier(game_v, COORDINATE_NULL);
-                    printf("\n\n\n");
-                }
+                fgets(game_save_name, MAX_CHAR, stdin);
 
                 /* Separator */
                 game_seperator();
@@ -960,23 +954,14 @@ void partie_jouer(game_t * game_v)
 
                 printf("Entrer l'emplacement de la sauvegarder:");
 
-                if(scanf("%19s", game_save_path_v) != 1){
-                    /* Separator */
-                    game_seperator();
-
-                    printf("Entrer au moins un caractere.\n");
-
-                    /* Enter loop */
-                    afficher_echiquier(game_v, COORDINATE_NULL);
-                    printf("\n\n\n");
-                }
+                fgets(game_save_path, MAX_CHAR, stdin);
 
                 /* Separator */
                 game_seperator();
 
-                printf("La partie '%s' a ete sauvegarder.\n", game_save_name);
+                printf("La partie a ete sauvergarder.");
 
-                partie_sauvegarder(game_v, game_save_name, game_save_path_v);
+                partie_sauvegarder(game_v, game_save_name, game_save_path);
 
                 /* Enter loop */
                 afficher_echiquier(game_v, COORDINATE_NULL);

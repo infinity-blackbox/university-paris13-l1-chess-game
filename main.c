@@ -26,7 +26,7 @@
                              @@                                                                                               @@@@
                             ,                                                                                                   @@
 																		 CHESS GAME
-																	    version 5.3
+																	    version 5.4
 
 																	    CONTRUBUTORS:
 															         William Phetsinorath
@@ -53,6 +53,7 @@ int main()
 	//======================================================================
 	// Main
 	//======================================================================
+
     partie_jouer(game_new);
     return EXIT_SUCCESS;
 }

@@ -21,10 +21,3 @@ restriction.o: restriction.c
 	gcc -c $(CFLAGS) src/restriction.c
  main.o: main.c
 	gcc -c $(CFLAGS) main.c
-
-clean:
-	rm -f *.o *~
-	rm -f src/*.o *~
-
-distclean: clean
-	rm -f $(PROG)
