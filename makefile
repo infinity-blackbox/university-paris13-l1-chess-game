@@ -3,7 +3,7 @@ CFLAGS= -g -Wall -std=c99 -pedantic -O3
 FILES=src/file.o src/game.o src/movement.o src/piece.o src/pile.o src/debug.o src/restriction.o main.o 
 PROG=Chess
 
-all:$(FILE)
+all:$(FILES)
 	gcc $(CFLAGS) $(FILES) -o $(PROG)
 file.o: file.c
 	gcc -c $(CFLAGS) src/file.c
