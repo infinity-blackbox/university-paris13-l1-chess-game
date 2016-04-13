@@ -114,7 +114,7 @@ void deplacement(game_t * game_v, coordinate_t coordinate_input_v, coordinate_t 
 
         /* Piece output presence check */
 
-        if(!case_vide(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != piece_couleur(game_v -> board[coordinate_input_v.x][coordinate_input_v.y]) )
+        if(!case_vide(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) && piece_couleur(game_v -> board[coordinate_output_v.x][coordinate_output_v.y]) != 2)
         {
             pile_stacking(game_v->catched, game_v->board[coordinate_output_v.x][coordinate_output_v.y]);
             game_movement_tmp.value = 1;
@@ -375,41 +375,31 @@ void partie_sauvegarder(game_t * game_v, char game_name_v[], char game_path_v[])
 	// Variables
 	//======================================================================
     FILE * game_file_tmp = NULL;
-    const char game_mod[MAX_CHAR] = "r+";
-    int n, x, y;
-    char tmp;
-
-    /* Initialize */
-    n = game_save_line(game_file_tmp);
+    int x, y;
+    char game_target_tmp[40];
 
 	//======================================================================
 	// Main
 	//======================================================================
-    game_file_tmp = fopen(game_path_v, game_mod);
 
-    if(game_file_tmp != NULL)
+    strcat(game_target_tmp, ".ptl");
+    game_file_tmp = fopen(game_name_v, "w");
+
+    if (game_file_tmp != NULL)
     {
 
-        for    (x = 0; x < n; x++)
-        {
+        for    (x = 0; x < 8; x++)
+      	{
 
-            for(y = 0; y < n; y++)
-            {
-                tmp = piece_caractere(game_v -> board[x][y]);
-                if(fscanf(game_file_tmp, "%c", &tmp) != 1){
-                /* Separator */
-                game_seperator();
+		for(y = 0; y < 8; y++)
+		{
+			fprintf(game_file_tmp, "%c", piece_caractere(game_v -> board[x][y]));
+	  	}
 
-                printf("Entrer au moins un caractere.\n");
+	fprintf(game_file_tmp, "\n");
+	}
 
-                /* Enter loop */
-                afficher_echiquier(game_v, COORDINATE_NULL);
-                printf("\n\n\n");
-            }
-            }
-
-        }
-
+	fclose(game_file_tmp), game_file_tmp = NULL;
     }
     else
     {
@@ -428,7 +418,6 @@ void partie_charger(char game_path_v[])
 	//======================================================================
 	// Main
 	//======================================================================
-
 }
 
 /**
@@ -891,10 +880,13 @@ void partie_jouer(game_t * game_v)
             /* Separator */
             game_seperator();
 
+            printf("La partie %s a ete sauvegarder.\n", game_save_name);
+
             partie_sauvegarder(game_v, game_save_name, game_save_path_v);
 
             /* Exit loop */
             afficher_echiquier(game_v, COORDINATE_NULL);
+            printf("\n\n\n");
 
             game_play = game_exit(game_v);
 
@@ -981,6 +973,8 @@ void partie_jouer(game_t * game_v)
 
                 /* Separator */
                 game_seperator();
+
+                printf("La partie '%s' a ete sauvegarder.\n", game_save_name);
 
                 partie_sauvegarder(game_v, game_save_name, game_save_path_v);
 

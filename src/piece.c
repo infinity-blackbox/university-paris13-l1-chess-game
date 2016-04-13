@@ -137,7 +137,7 @@ piece_t piece_identifier(char caracter_v)
  * Parameters:
  *     piece_t - piece_v
  *
- * @return int
+ * @return char
  */
 char piece_caractere(piece_t piece_v)
 {
