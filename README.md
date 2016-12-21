@@ -7,11 +7,10 @@ Université Paris 13 - Institut Galilée
 Encadré par Julien David https://lipn.univ-paris13.fr/~david/
 Chef de projet : Rakib Sheikh "NoobZik" : http://noobzik.ml
 
-What is this repository for? ###
+### What is this repository for? ###
 
 * Quick summary
 * Version 4.x.x
-* 
 
 ### How do I get set up? ###
 
@@ -20,8 +19,21 @@ What is this repository for? ###
 Ce projet est rédigé en langage C.
 
 * Configuration
-Compilation avec make
-N'oubliez pas de nettoyer les fichiers résiduels avec make clean
+
+Pour compiler : tappez
+
+```
+#!bash
+
+make
+```
+
+N'oubliez pas de nettoyer les fichiers résiduels avec :
+```
+#!bash
+
+make clean
+```
 
 
 ### Report de bug ###
